@@ -12,26 +12,31 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <!--Balance, points per smack and the smack button-->
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <TextBlock Text="Balance: " FontFamily="{StaticResource Poppins-Bold}"/>
-                <TextBlock Text="{Binding Balance,FallbackValue=0}" />
-            </StackPanel>
-            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <TextBlock Text="Points Per Smack: " FontFamily="{StaticResource Poppins-Bold}"/>
-                <TextBlock Text="{Binding PointPerSmack, FallbackValue=0}"/>
-            </StackPanel>
-            <Button x:Name="Smack" Content="Smack" Grid.Row="3" Height="100" Margin="10"/>
-        </Grid>
+        
+        <!-- Left side-->
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!--Balance, points per smack and the smack button-->
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock Text="Balance: " FontFamily="{StaticResource Poppins-Bold}"/>
+                    <TextBlock Text="{Binding Balance,FallbackValue=0}" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock Text="Points Per Smack: " FontFamily="{StaticResource Poppins-Bold}"/>
+                    <TextBlock Text="{Binding PointPerSmack, FallbackValue=0}"/>
+                </StackPanel>
+                <Button x:Name="Smack" Grid.Row="3" Content="Smack" Style="{StaticResource SmackButtonStyle}" />
+            </Grid>
+        </ScrollViewer>
 
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -56,6 +61,8 @@
 
                 <!--Upgrades-->
                 <StackPanel>
+                    
+                    <!-- Extra hand upgrade-->
                     <Border ToolTip="An extra hand gives +2 per smack points" Style="{StaticResource BuyButtonStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -72,6 +79,8 @@
                             <Button x:Name="ExtraHand" Grid.Column="4" Style="{StaticResource BuyButonStyle}" />
                         </Grid>
                     </Border>
+                    
+                    <!-- Stick upgrade -->
                     <Border ToolTip="A stick gives +5 per smack points" Style="{StaticResource BuyButtonStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>

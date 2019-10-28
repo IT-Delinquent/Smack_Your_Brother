@@ -1,0 +1,167 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Loading screen buttons -->
+    <Style x:Key="LoadButtons" TargetType="{x:Type Button}">
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="5"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="loadButtonsBorder" Background="{StaticResource DOrangeBorder}" Grid.RowSpan="2"/>
+                        <DockPanel>
+                            <ContentPresenter x:Name="loadButtonsPresenter" Content="{TemplateBinding Content}" Margin="0 8 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.Foreground="White" />
+                        </DockPanel>
+                        <Rectangle x:Name="loadButtonsRectangle" Fill="{StaticResource LOrangeBorder}" Grid.Row="1" HorizontalAlignment="Left" Width="0"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--Mouse over trigger-->
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard Storyboard.TargetName="loadButtonsRectangle" Storyboard.TargetProperty="Width">
+                                        <DoubleAnimationUsingKeyFrames BeginTime="0:0:0" >
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.1" Value="40"/>
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="70"/>
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.4" Value="80"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard Storyboard.TargetName="loadButtonsRectangle" Storyboard.TargetProperty="Width">
+                                        <DoubleAnimationUsingKeyFrames BeginTime="0:0:0" >
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0" Value="80"/>
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.1" Value="70"/>
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="40"/>
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Buying buttons -->
+    <Style x:Key="BuyButonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Margin" Value="4"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Name="buttonGrid">
+                        <Image Name="buttonImage" Source="/Smack Your Brother;component/Assets/Images/BuyImage.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--Mouse over-->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Margin" Value="2"/>
+                        </Trigger>
+                        <!--Not mouse over-->
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter Property="Margin" Value="4"/>
+                        </Trigger>
+                        <!--Is enabled-->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Trigger.Setters>
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger.Setters>
+                        </Trigger>
+                        <!--Is not enabled-->
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Trigger.Setters>
+                                <Setter Property="Opacity" Value="1"/>
+                            </Trigger.Setters>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Buy button borders -->
+    <Style x:Key="BuyButtonStyle" TargetType="{x:Type Border}">
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="{StaticResource DOrangeBorder}"/>
+        <Setter Property="Background" Value="{StaticResource OrangeGradientH}"/>
+    </Style>
+    
+    <!-- Smack button style -->
+    <Style x:Key="SmackButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Margin="10">
+
+                        <Ellipse x:Name="borderEllipse" Fill="{StaticResource DOrangeBorder}"
+                                 Margin="50 0 50 50" Stretch="UniformToFill"/>
+
+                        <Ellipse x:Name="smackEllipse" Fill="{StaticResource OrangeGradientV}"
+                                 Margin="60 10 60 60" Stretch="UniformToFill"/>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard Storyboard.TargetName="smackEllipse" Storyboard.TargetProperty="Margin">
+                                        <ThicknessAnimation From="60 10 60 60" To="200 150 200 200" Duration="0:0:0.2"
+                                                            AccelerationRatio="0.7" DecelerationRatio="0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard Storyboard.TargetName="smackEllipse" Storyboard.TargetProperty="StrokeThickness">
+                                        <DoubleAnimationUsingKeyFrames>
+                                            <LinearDoubleKeyFrame Value="4" KeyTime="0:0:0.1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Click">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard Storyboard.TargetName="smackEllipse" Storyboard.TargetProperty="StrokeThickness">
+                                        <DoubleAnimationUsingKeyFrames>
+                                            <LinearDoubleKeyFrame Value="100" KeyTime="0:0:0.1"/>
+                                            <LinearDoubleKeyFrame Value="150" KeyTime="0:0:0.2"/>
+                                            <LinearDoubleKeyFrame Value="100" KeyTime="0:0:0.3"/>
+                                            <LinearDoubleKeyFrame Value="8" KeyTime="0:0:0.4"/>
+                                        </DoubleAnimationUsingKeyFrames> 
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
