@@ -138,6 +138,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\ScrollBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\TextBlocks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,6 +172,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\BuyImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Hammer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Slipper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Shoe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\PhoneBook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Keyboard.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

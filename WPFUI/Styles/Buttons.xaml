@@ -16,7 +16,8 @@
                         </Grid.RowDefinitions>
                         <Border x:Name="loadButtonsBorder" Background="{StaticResource DOrangeBorder}" Grid.RowSpan="2"/>
                         <DockPanel>
-                            <ContentPresenter x:Name="loadButtonsPresenter" Content="{TemplateBinding Content}" Margin="0 8 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.Foreground="White" />
+                            <ContentPresenter x:Name="loadButtonsPresenter" Content="{TemplateBinding Content}" Margin="0 8 0 0" HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" TextBlock.Foreground="White" />
                         </DockPanel>
                         <Rectangle x:Name="loadButtonsRectangle" Fill="{StaticResource LOrangeBorder}" Grid.Row="1" HorizontalAlignment="Left" Width="0"/>
                     </Grid>
@@ -107,26 +108,22 @@
     
     <!-- Smack button style -->
     <Style x:Key="SmackButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid Margin="10">
+                    <Grid>
+                        <Ellipse x:Name="borderEllipse" Fill="{StaticResource DOrangeBorder}" Stretch="UniformToFill" Height="160"
+                                 HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-                        <Ellipse x:Name="borderEllipse" Fill="{StaticResource DOrangeBorder}"
-                                 Margin="50 0 50 50" Stretch="UniformToFill"/>
-
-                        <Ellipse x:Name="smackEllipse" Fill="{StaticResource OrangeGradientV}"
-                                 Margin="60 10 60 60" Stretch="UniformToFill"/>
-
+                        <Ellipse x:Name="smackEllipse" Fill="{StaticResource OrangeGradientV}" Stretch="UniformToFill" Height="150"
+                                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <EventTrigger RoutedEvent="MouseEnter">
                             <EventTrigger.Actions>
                                 <BeginStoryboard>
-                                    <Storyboard Storyboard.TargetName="smackEllipse" Storyboard.TargetProperty="Margin">
-                                        <ThicknessAnimation From="60 10 60 60" To="200 150 200 200" Duration="0:0:0.2"
+                                    <Storyboard Storyboard.TargetName="smackEllipse" Storyboard.TargetProperty="Height">
+                                        <DoubleAnimation To="145" Duration="0:0:0.2"
                                                             AccelerationRatio="0.7" DecelerationRatio="0.3"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -135,9 +132,9 @@
                         <EventTrigger RoutedEvent="MouseLeave">
                             <EventTrigger.Actions>
                                 <BeginStoryboard>
-                                    <Storyboard Storyboard.TargetName="smackEllipse" Storyboard.TargetProperty="StrokeThickness">
+                                    <Storyboard Storyboard.TargetName="smackEllipse" Storyboard.TargetProperty="Height">
                                         <DoubleAnimationUsingKeyFrames>
-                                            <LinearDoubleKeyFrame Value="4" KeyTime="0:0:0.1"/>
+                                            <LinearDoubleKeyFrame Value="150" KeyTime="0:0:0.1"/>
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -146,18 +143,12 @@
                         <EventTrigger RoutedEvent="Click">
                             <EventTrigger.Actions>
                                 <BeginStoryboard>
-                                    <Storyboard Storyboard.TargetName="smackEllipse" Storyboard.TargetProperty="StrokeThickness">
-                                        <DoubleAnimationUsingKeyFrames>
-                                            <LinearDoubleKeyFrame Value="100" KeyTime="0:0:0.1"/>
-                                            <LinearDoubleKeyFrame Value="150" KeyTime="0:0:0.2"/>
-                                            <LinearDoubleKeyFrame Value="100" KeyTime="0:0:0.3"/>
-                                            <LinearDoubleKeyFrame Value="8" KeyTime="0:0:0.4"/>
-                                        </DoubleAnimationUsingKeyFrames> 
+                                    <Storyboard Storyboard.TargetName="smackEllipse" Storyboard.TargetProperty="Height" >
+                                        <DoubleAnimation Duration="0:0:0.05" To="0" From="140" AutoReverse="True"/>
                                     </Storyboard>
-                                </BeginStoryboard>
+                                 </BeginStoryboard>
                             </EventTrigger.Actions>
                         </EventTrigger>
-
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

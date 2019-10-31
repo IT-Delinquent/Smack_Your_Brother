@@ -26,8 +26,5 @@
         <GradientStop Color="{StaticResource DOrange}" Offset="0"/>
         <GradientStop Color="{StaticResource LOrange}" Offset="1"/>
     </LinearGradientBrush>
-   
-   
-
 
 </ResourceDictionary>
