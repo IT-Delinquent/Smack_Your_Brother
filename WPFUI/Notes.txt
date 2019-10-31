@@ -24,3 +24,12 @@
 		}
 
 :End of adding a new button / upgrade
+
+
+: Upgrades to add
+
+Microwave
+TV
+Sofa/Couch
+
+:End of upgrades to add
