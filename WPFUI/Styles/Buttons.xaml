@@ -58,52 +58,48 @@
     </Style>
 
     <!-- Buying buttons -->
-    <Style x:Key="BuyButonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="BuyButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Margin" Value="4"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid Name="buttonGrid">
-                        <Image Name="buttonImage" Source="/Smack Your Brother;component/Assets/Images/BuyImage.png"/>
+                        <Border Name="buttonImage" Background="{StaticResource DOrangeBorder}" CornerRadius="0 15 15 0"/>
                     </Grid>
-                    <ControlTemplate.Triggers>
-                        <!--Mouse over-->
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Margin" Value="2"/>
-                        </Trigger>
-                        <!--Not mouse over-->
-                        <Trigger Property="IsMouseOver" Value="False">
-                            <Setter Property="Margin" Value="4"/>
-                        </Trigger>
-                        <!--Is enabled-->
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Trigger.Setters>
-                                <Setter Property="Opacity" Value="0.5"/>
-                            </Trigger.Setters>
-                        </Trigger>
-                        <!--Is not enabled-->
-                        <Trigger Property="IsEnabled" Value="True">
-                            <Trigger.Setters>
-                                <Setter Property="Opacity" Value="1"/>
-                            </Trigger.Setters>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <!-- Buy button borders -->
-    <Style x:Key="BuyButtonStyle" TargetType="{x:Type Border}">
+    <!-- Upgrade button -->
+    <Style x:Key="UpgradeBorder" TargetType="{x:Type Border}">
         <Setter Property="CornerRadius" Value="20"/>
         <Setter Property="Margin" Value="2"/>
-        <Setter Property="Height" Value="50"/>
+        <Setter Property="Height" Value="80"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="{StaticResource DOrangeBorder}"/>
         <Setter Property="Background" Value="{StaticResource OrangeGradientH}"/>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="MouseDown">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard Storyboard.TargetProperty="BorderThickness"  Duration="0:0:0.1"> 
+                            <ThicknessAnimation From="4" To="2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseUp">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard Storyboard.TargetProperty="BorderThickness"  Duration="0:0:0.1">
+                            <ThicknessAnimation From="2" To="4"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+
+        </Style.Triggers>
     </Style>
     
     <!-- Smack button style -->

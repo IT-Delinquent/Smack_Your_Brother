@@ -24,7 +24,7 @@ namespace WPFUI.ViewModels
         /// <summary>
         /// Holds the current balance for the user
         /// </summary>
-        private double _balance = 0;
+        private double _balance = 99999999999;
 
         #endregion
 
@@ -168,6 +168,26 @@ namespace WPFUI.ViewModels
 
         #endregion
 
+        #region Microwave private fields
+
+        /// <summary>
+        /// Holds the amount of microwave upgrades
+        /// </summary>
+        private double _microwaveQTY = 0;
+
+        /// <summary>
+        /// Holds the reward added to the per smack values 
+        /// when buying a microwave
+        /// </summary>
+        private double _microwaveReward = 80;
+
+        /// <summary>
+        /// The price of a microwave when first starting the game
+        /// </summary>
+        private double _microwavePrice = 500000;
+
+        #endregion
+
         #endregion
 
         #region Game public fields
@@ -189,6 +209,7 @@ namespace WPFUI.ViewModels
                 NotifyOfPropertyChange(() => CanKeyboard);
                 NotifyOfPropertyChange(() => CanStick);
                 NotifyOfPropertyChange(() => CanHammer);
+                NotifyOfPropertyChange(() => CanMicrowave);
             }
         }
 
@@ -459,6 +480,42 @@ namespace WPFUI.ViewModels
 
         #endregion
 
+        #region Microwave public fields
+
+        /// <summary>
+        /// Holds the quantity of microwaves that are owned
+        /// </summary>
+        public double MicrowaveQTY
+        {
+            get { return _microwaveQTY; }
+            set
+            {
+                _microwaveQTY = value;
+                NotifyOfPropertyChange(() => MicrowaveQTY);
+            }
+        }
+
+        /// <summary>
+        /// Holds the current price of a microwave
+        /// </summary>
+        public double MicrowavePrice
+        {
+            get { return _microwavePrice; }
+            set
+            {
+                _microwavePrice = value;
+                NotifyOfPropertyChange(() => MicrowavePrice);
+            }
+        }
+
+        /// <summary>
+        /// Decides whether the buy button for a microwave is enabled 
+        /// or disabled
+        /// </summary>
+        public bool CanMicrowave => Balance > MicrowavePrice;
+
+        #endregion
+
         #region Game public methods
 
         /// <summary>
@@ -585,6 +642,24 @@ namespace WPFUI.ViewModels
             HammerPrice += Math.Round((HammerQTY * 15));
             //Update if the user can purchase a hammer
             NotifyOfPropertyChange(() => CanHammer);
+        }
+
+        /// <summary>
+        /// Performs the actions when the player presses the buy button for
+        /// a microwave
+        /// </summary>
+        public void Microwave()
+        {
+            //Take off the price of the microwave
+            Balance -= MicrowavePrice;
+            //Increase the quantity owned
+            MicrowaveQTY++;
+            //Update the points per microwave
+            PointPerSmack += _microwaveReward;
+            //Update the price for a microwave
+            MicrowavePrice += Math.Round((MicrowaveQTY * 15));
+            //Update if the user can purchase a microwave
+            NotifyOfPropertyChange(() => CanMicrowave);
         }
 
         /// <summary>
