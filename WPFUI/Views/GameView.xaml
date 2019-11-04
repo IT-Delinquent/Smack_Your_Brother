@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFUI.Views"
-             mc:Ignorable="d" d:DesignWidth="900" Background="{StaticResource BackGradient}" >
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="550" Background="{StaticResource BackGradient}" >
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
@@ -51,116 +51,201 @@
                 <!--Upgrades-->
                 <StackPanel>
 
-                    <!-- Extra hand upgrade-->
-                    <Border ToolTip="An extra hand gives +1 per smack points" Style="{StaticResource UpgradeBorder}">
+                    <!-- Extra hand Upgrade-->
+                    <Border Style="{StaticResource UpgradeBorder}" ToolTip="An Extra Hand gives +1 per smack points">
                         <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="35"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="0.7*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Source="/Smack Your Brother;component/Assets/Images/ExtraHand.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2 0 0 0" />
-                            <TextBlock Text="Extra Hand" HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Center" Margin="5 0 0 0"/>
-                            <Viewbox Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock Text="{Binding ExtraHandQTY,FallbackValue=0}" />
+                            <!-- upgrade image -->
+                            <Image Source="/Smack Your Brother;component/Assets/Images/ExtraHand.png" Grid.RowSpan="2" Margin="5"/>
+                            <!-- upgrade name -->
+                            <TextBlock Grid.Column="1" Text="ExtraHand" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                            <!-- upgrade counter -->
+                            <Button x:Name="ExtraHand" Grid.Column="2" Grid.RowSpan="2" Background="{StaticResource DOrangeBorder}" Style="{StaticResource BuyButtonStyle}"/>
+                            <Viewbox Grid.Column="2" Grid.RowSpan="2" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding ExtraHandQTY, FallbackValue=0}" IsHitTestVisible="False"/>
                             </Viewbox>
-                            <Viewbox Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                                <TextBlock Text="{Binding ExtraHandPrice,FallbackValue=0}" />
+                            <!-- price section -->
+                            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
+                                <Viewbox Margin="5">
+                                    <Image Source="/Smack Your Brother;component/Assets/Images/BuyImage.png" />
+                                </Viewbox>
+                                <Viewbox >
+                                    <TextBlock Text="{Binding ExtraHandPrice, FallbackValue=0}" Margin="5 0 0 0"/>
+                                </Viewbox>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- Slipper Upgrade-->
+                    <Border Style="{StaticResource UpgradeBorder}" ToolTip="A Slipper gives +3 per smack points">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="0.7*"/>
+                            </Grid.ColumnDefinitions>
+                            <!-- upgrade image -->
+                            <Image Source="/Smack Your Brother;component/Assets/Images/Slipper.png" Grid.RowSpan="2" Margin="5"/>
+                            <!-- upgrade name -->
+                            <TextBlock Grid.Column="1" Text="Slipper" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                            <!-- upgrade counter -->
+                            <Button x:Name="Slipper" Grid.Column="2" Grid.RowSpan="2" Background="{StaticResource DOrangeBorder}" Style="{StaticResource BuyButtonStyle}"/>
+                            <Viewbox Grid.Column="2" Grid.RowSpan="2" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding SlipperQTY, FallbackValue=0}" IsHitTestVisible="False"/>
                             </Viewbox>
-                            <Button x:Name="ExtraHand" Grid.Column="4" Style="{StaticResource BuyButtonStyle}" />
+                            <!-- price section -->
+                            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
+                                <Viewbox Margin="5">
+                                    <Image Source="/Smack Your Brother;component/Assets/Images/BuyImage.png" />
+                                </Viewbox>
+                                <Viewbox >
+                                    <TextBlock Text="{Binding SlipperPrice, FallbackValue=0}" Margin="5 0 0 0"/>
+                                </Viewbox>
+                            </StackPanel>
                         </Grid>
                     </Border>
 
-                    <!-- Stick upgrade -->
-                    <Border ToolTip="A Slipper gives +3 per smack points" Style="{StaticResource UpgradeBorder}">
+                    <!-- Shoe Upgrade-->
+                    <Border Style="{StaticResource UpgradeBorder}" ToolTip="A Shoe gives +5 per smack points">
                         <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="35"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="0.7*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Source="/Smack Your Brother;component/Assets/Images/Slipper.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2 0 0 0"/>
-                            <TextBlock Text="Slipper" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="5 0 0 0"/>
-                            <TextBlock Text="{Binding SlipperQTY,FallbackValue=0}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding SlipperPrice, FallbackValue=0}" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Button x:Name="Slipper" Grid.Column="4" Style="{StaticResource BuyButtonStyle}"/>
+                            <!-- upgrade image -->
+                            <Image Source="/Smack Your Brother;component/Assets/Images/Shoe.png" Grid.RowSpan="2" Margin="5"/>
+                            <!-- upgrade name -->
+                            <TextBlock Grid.Column="1" Text="Shoe" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                            <!-- upgrade counter -->
+                            <Button x:Name="Shoe" Grid.Column="2" Grid.RowSpan="2" Background="{StaticResource DOrangeBorder}" Style="{StaticResource BuyButtonStyle}"/>
+                            <Viewbox Grid.Column="2" Grid.RowSpan="2" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding ShoeQTY, FallbackValue=0}" IsHitTestVisible="False"/>
+                            </Viewbox>
+                            <!-- price section -->
+                            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
+                                <Viewbox Margin="5">
+                                    <Image Source="/Smack Your Brother;component/Assets/Images/BuyImage.png" />
+                                </Viewbox>
+                                <Viewbox >
+                                    <TextBlock Text="{Binding ShoePrice, FallbackValue=0}" Margin="5 0 0 0"/>
+                                </Viewbox>
+                            </StackPanel>
                         </Grid>
                     </Border>
 
-                    <!-- Shoe upgrade -->
-                    <Border ToolTip="A Shoe gives +5 per smack points" Style="{StaticResource UpgradeBorder}">
+                    <!-- PhoneBook Upgrade-->
+                    <Border Style="{StaticResource UpgradeBorder}" ToolTip="A Phone book gives +8 per smack points">
                         <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="35"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="0.7*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Source="/Smack Your Brother;component/Assets/Images/Shoe.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2 0 0 0"/>
-                            <TextBlock Text="Shoe" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="5 0 0 0"/>
-                            <TextBlock Text="{Binding ShoeQTY,FallbackValue=0}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding ShoePrice, FallbackValue=0}" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Button x:Name="Shoe" Grid.Column="4" Style="{StaticResource BuyButtonStyle}"/>
+                            <!-- upgrade image -->
+                            <Image Source="/Smack Your Brother;component/Assets/Images/PhoneBook.png" Grid.RowSpan="2" Margin="5"/>
+                            <!-- upgrade name -->
+                            <TextBlock Grid.Column="1" Text="Phone Book" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                            <!-- upgrade counter -->
+                            <Button x:Name="PhoneBook" Grid.Column="2" Grid.RowSpan="2" Background="{StaticResource DOrangeBorder}" Style="{StaticResource BuyButtonStyle}"/>
+                            <Viewbox Grid.Column="2" Grid.RowSpan="2" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding PhoneBookQTY, FallbackValue=0}" IsHitTestVisible="False"/>
+                            </Viewbox>
+                            <!-- price section -->
+                            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
+                                <Viewbox Margin="5">
+                                    <Image Source="/Smack Your Brother;component/Assets/Images/BuyImage.png" />
+                                </Viewbox>
+                                <Viewbox >
+                                    <TextBlock Text="{Binding PhoneBookPrice, FallbackValue=0}" Margin="5 0 0 0"/>
+                                </Viewbox>
+                            </StackPanel>
                         </Grid>
                     </Border>
 
-                    <!-- PhoneBook upgrade -->
-                    <Border ToolTip="A Phone book gives +8 per smack points" Style="{StaticResource UpgradeBorder}">
+                    <!-- Keyboard Upgrade-->
+                    <Border Style="{StaticResource UpgradeBorder}" ToolTip="A Keyboard gives +12 per smack points">
                         <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="35"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="0.7*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Source="/Smack Your Brother;component/Assets/Images/PhoneBook.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2 0 0 0"/>
-                            <TextBlock Text="Phone Book" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="5 0 0 0"/>
-                            <TextBlock Text="{Binding PhoneBookQTY,FallbackValue=0}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding PhoneBookPrice, FallbackValue=0}" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Button x:Name="PhoneBook" Grid.Column="4" Style="{StaticResource BuyButtonStyle}"/>
+                            <!-- upgrade image -->
+                            <Image Source="/Smack Your Brother;component/Assets/Images/Keyboard.png" Grid.RowSpan="2" Margin="5"/>
+                            <!-- upgrade name -->
+                            <TextBlock Grid.Column="1" Text="Keyboard" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                            <!-- upgrade counter -->
+                            <Button x:Name="Keyboard" Grid.Column="2" Grid.RowSpan="2" Background="{StaticResource DOrangeBorder}" Style="{StaticResource BuyButtonStyle}"/>
+                            <Viewbox Grid.Column="2" Grid.RowSpan="2" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding KeyboardQTY, FallbackValue=0}" IsHitTestVisible="False"/>
+                            </Viewbox>
+                            <!-- price section -->
+                            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
+                                <Viewbox Margin="5">
+                                    <Image Source="/Smack Your Brother;component/Assets/Images/BuyImage.png" />
+                                </Viewbox>
+                                <Viewbox >
+                                    <TextBlock Text="{Binding KeyboardPrice, FallbackValue=0}" Margin="5 0 0 0"/>
+                                </Viewbox>
+                            </StackPanel>
                         </Grid>
                     </Border>
 
-                    <!-- Keyboard upgrade -->
-                    <Border ToolTip="A Keyboard gives +12 per smack points" Style="{StaticResource UpgradeBorder}">
+                    <!-- Stick Upgrade-->
+                    <Border Style="{StaticResource UpgradeBorder}" ToolTip="A Stick gives +20 per smack points">
                         <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="35"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="0.7*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Source="/Smack Your Brother;component/Assets/Images/Keyboard.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2 0 0 0"/>
-                            <TextBlock Text="Keyboard" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="5 0 0 0"/>
-                            <TextBlock Text="{Binding KeyboardQTY,FallbackValue=0}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding KeyboardPrice, FallbackValue=0}" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Button x:Name="Keyboard" Grid.Column="4" Style="{StaticResource BuyButtonStyle}"/>
-                        </Grid>
-                    </Border>
-
-
-                    <!-- Stick upgrade -->
-                    <Border ToolTip="A Stick gives +20 per smack points" Style="{StaticResource UpgradeBorder}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="35"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="60"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Source="/Smack Your Brother;component/Assets/Images/Stick.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2 0 0 0"/>
-                            <TextBlock Text="Stick" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="5 0 0 0"/>
-                            <TextBlock Text="{Binding StickQTY,FallbackValue=0}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding StickPrice, FallbackValue=0}" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Button x:Name="Stick" Grid.Column="4" Style="{StaticResource BuyButtonStyle}"/>
+                            <!-- upgrade image -->
+                            <Image Source="/Smack Your Brother;component/Assets/Images/Stick.png" Grid.RowSpan="2" Margin="5"/>
+                            <!-- upgrade name -->
+                            <TextBlock Grid.Column="1" Text="Stick" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                            <!-- upgrade counter -->
+                            <Button x:Name="Stick" Grid.Column="2" Grid.RowSpan="2" Background="{StaticResource DOrangeBorder}" Style="{StaticResource BuyButtonStyle}"/>
+                            <Viewbox Grid.Column="2" Grid.RowSpan="2" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding StickQTY, FallbackValue=0}" IsHitTestVisible="False"/>
+                            </Viewbox>
+                            <!-- price section -->
+                            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
+                                <Viewbox Margin="5">
+                                    <Image Source="/Smack Your Brother;component/Assets/Images/BuyImage.png" />
+                                </Viewbox>
+                                <Viewbox >
+                                    <TextBlock Text="{Binding StickPrice, FallbackValue=0}" Margin="5 0 0 0"/>
+                                </Viewbox>
+                            </StackPanel>
                         </Grid>
                     </Border>
 
@@ -196,7 +281,6 @@
                             </StackPanel>
                         </Grid>
                     </Border>
-
 
                     <!-- Microwave Upgrade-->
                     <Border Style="{StaticResource UpgradeBorder}" ToolTip="A Microwave gives +80 per smack points">

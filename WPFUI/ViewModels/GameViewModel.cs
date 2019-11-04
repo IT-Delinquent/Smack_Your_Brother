@@ -24,7 +24,7 @@ namespace WPFUI.ViewModels
         /// <summary>
         /// Holds the current balance for the user
         /// </summary>
-        private double _balance = 99999999999;
+        private double _balance = 0;
 
         #endregion
 

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFUI.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="900" FontSize="24" Background="{StaticResource BackGradient}">
+             d:DesignHeight="550" d:DesignWidth="900" FontSize="24" Background="{StaticResource BackGradient}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

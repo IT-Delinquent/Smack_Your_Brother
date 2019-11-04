@@ -57,21 +57,29 @@
         </Setter>
     </Style>
 
-    <!-- Buying buttons -->
+    <!-- Upgrade buying button -->
     <Style x:Key="BuyButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid Name="buttonGrid">
-                        <Border Name="buttonImage" Background="{StaticResource DOrangeBorder}" CornerRadius="0 15 15 0"/>
+                        <Border Name="button" Background="{StaticResource DOrangeBorder}" CornerRadius="0 15 15 0"/>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter TargetName="button" Property="Opacity" Value="1"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="button" Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <!-- Upgrade button -->
+    <!-- Upgrade object -->
     <Style x:Key="UpgradeBorder" TargetType="{x:Type Border}">
         <Setter Property="CornerRadius" Value="20"/>
         <Setter Property="Margin" Value="2"/>
@@ -79,31 +87,11 @@
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="BorderBrush" Value="{StaticResource DOrangeBorder}"/>
         <Setter Property="Background" Value="{StaticResource OrangeGradientH}"/>
-        <Style.Triggers>
-            <EventTrigger RoutedEvent="MouseDown">
-                <EventTrigger.Actions>
-                    <BeginStoryboard>
-                        <Storyboard Storyboard.TargetProperty="BorderThickness"  Duration="0:0:0.1"> 
-                            <ThicknessAnimation From="4" To="2"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger.Actions>
-            </EventTrigger>
-            <EventTrigger RoutedEvent="MouseUp">
-                <EventTrigger.Actions>
-                    <BeginStoryboard>
-                        <Storyboard Storyboard.TargetProperty="BorderThickness"  Duration="0:0:0.1">
-                            <ThicknessAnimation From="2" To="4"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger.Actions>
-            </EventTrigger>
-
-        </Style.Triggers>
     </Style>
     
     <!-- Smack button style -->
     <Style x:Key="SmackButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
