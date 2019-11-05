@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
+using WPFUI.Helpers;
+using WPFUI.SaveGameOperations;
 
 namespace WPFUI.ViewModels
 {
@@ -189,7 +193,7 @@ namespace WPFUI.ViewModels
         #endregion
 
         #endregion
-
+    
         #region Game public fields
 
         /// <summary>
@@ -669,6 +673,31 @@ namespace WPFUI.ViewModels
         public void Smack()
         {
             Balance += PointPerSmack;
+        }
+
+        /// <summary>
+        /// Saves the current progress
+        /// </summary>
+        public void Save()
+        {
+
+            if (string.IsNullOrEmpty(FileOperations.SaveLocation))
+            {
+
+            }
+
+            var data = SaveData.CreateData(PointPerSmack, Balance,
+                                ExtraHandQTY, ExtraHandPrice,
+                                SlipperQTY, SlipperPrice,
+                                ShoeQTY, ShoePrice,
+                                PhoneBookQTY, PhoneBookPrice,
+                                KeyboardQTY, KeyboardPrice,
+                                StickQTY, StickPrice,
+                                HammerQTY, HammerPrice,
+                                MicrowaveQTY, MicrowavePrice);
+
+            FileOperations.SaveData(data);
+
         }
 
         #endregion

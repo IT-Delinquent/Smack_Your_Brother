@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFUI.Views"
-             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="550" Background="{StaticResource BackGradient}" >
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="600" Background="{StaticResource BackGradient}" >
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
@@ -19,8 +19,8 @@
                     <RowDefinition/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition />
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <!--Balance, points per smack and the smack button-->
@@ -32,9 +32,17 @@
                     <TextBlock Text="Points Per Smack: " FontFamily="{StaticResource Poppins-Bold}"/>
                     <TextBlock Text="{Binding PointPerSmack, FallbackValue=0}"/>
                 </StackPanel>
+                <!-- Smack button -->
                 <Viewbox Grid.Row="3" Margin="30">
                     <Button x:Name="Smack" Content="Smack" Style="{StaticResource SmackButtonStyle}" />
                 </Viewbox>
+                
+                <!-- Save and exit buttons -->
+                <StackPanel Grid.Row="4" Orientation="Horizontal">
+                    <Button x:Name="Save" Content="Save" Style="{StaticResource GenericButtonStyle}" Margin="0 0 10 0"/>
+                    <Button x:Name="Exit" Content="Exit" Style="{StaticResource GenericButtonStyle}"/>
+                </StackPanel>
+                
             </Grid>
         </ScrollViewer>
 

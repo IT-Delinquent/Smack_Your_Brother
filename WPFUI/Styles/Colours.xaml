@@ -8,6 +8,8 @@
     <Color x:Key="DOrange">#FFFF824F</Color>
     <SolidColorBrush x:Key="LOrangeBorder">#FFFDAF90</SolidColorBrush>
     <SolidColorBrush x:Key="DOrangeBorder">#FFFF5915</SolidColorBrush>
+    <SolidColorBrush x:Key="LBlueBorder">#FF22BFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="DBlueBorder">#FF0068FF</SolidColorBrush>
 
     <!--The gradient background for the application-->
     <LinearGradientBrush x:Key="BackGradient" StartPoint="0.5,0" EndPoint="0,1" >

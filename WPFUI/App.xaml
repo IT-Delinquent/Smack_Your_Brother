@@ -24,6 +24,7 @@
                 <ResourceDictionary Source="/Styles/Buttons.xaml"/>
                 <ResourceDictionary Source="/Styles/TextBlocks.xaml"/>
                 <ResourceDictionary Source="/Styles/ScrollBar.xaml"/>
+                <ResourceDictionary Source="/Styles/Popups.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
