@@ -10,10 +10,11 @@ using System.Windows.Forms;
 
 namespace WPFUI.SaveGameOperations
 {
+    /// <summary>
+    /// Contains a single method for collecting the data and putting it into a string
+    /// </summary>
     public class SaveData
     {
-
-
         /// <summary>
         /// Used to build a list of the game save data
         /// </summary>

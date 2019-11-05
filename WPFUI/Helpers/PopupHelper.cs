@@ -48,7 +48,7 @@ namespace WPFUI.Helpers
             _window = ShellViewModel.GetWindowManager();
             _popup = ShellViewModel.GetPopup();
 
-            _popup.UpdateMessage(header, message);
+            _popup.UpdatePopup(header, message);
             _window.ShowDialog(_popup, null, GetSettings());
         }
     }
