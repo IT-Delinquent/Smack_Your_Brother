@@ -75,7 +75,7 @@ namespace WPFUI.ViewModels
         /// <param name="message">Not used</param>
         public void Handle(LoadGameEvent message)
         {
-            ActivateItem(new GameViewModel());
+            ActivateItem(new GameViewModel(_events));
         }
     }
 }

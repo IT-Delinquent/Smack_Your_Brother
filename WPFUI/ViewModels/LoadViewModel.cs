@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WPFUI.EventModels;
+using WPFUI.SaveGameOperations;
 
 namespace WPFUI.ViewModels
 {
@@ -33,8 +34,27 @@ namespace WPFUI.ViewModels
         /// </summary>
         public void NewGame()
         {
+            //Clear the saved location
+            FileOperations.SaveLocation = "";
             //Launches the LoadGameEvent
             _events.PublishOnUIThread(new LoadGameEvent());
+        }
+
+        /// <summary>
+        /// The event for when the LoadGame button is pressed
+        /// </summary>
+        public void LoadGame()
+        {
+            //Clear the saved location 
+            FileOperations.SaveLocation = "";
+            FileOperations.SelectSaveLocation();
+
+            //If the SaveLocation still doesn't have a value
+            //Don't do anything
+            if (FileOperations.SaveLocation != "Cancelled")
+            {
+                _events.BeginPublishOnUIThread(new LoadGameEvent());
+            }
         }
     }
 }

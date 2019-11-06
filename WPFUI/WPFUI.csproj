@@ -89,6 +89,7 @@
     <Compile Include="Helpers\PopupHelper.cs" />
     <Compile Include="Models\GameSaveClass.cs" />
     <Compile Include="SaveGameOperations\FileOperations.cs" />
+    <Compile Include="SaveGameOperations\LoadData.cs" />
     <Compile Include="SaveGameOperations\SaveData.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\LoadViewModel.cs" />
@@ -185,7 +186,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\Icon.ico" />
-    <Resource Include="Notes.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\Stick.png" />

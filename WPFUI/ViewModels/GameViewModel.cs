@@ -6,7 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using WPFUI.EventModels;
 using WPFUI.Helpers;
+using WPFUI.Models;
 using WPFUI.SaveGameOperations;
 
 namespace WPFUI.ViewModels
@@ -16,6 +18,30 @@ namespace WPFUI.ViewModels
     /// </summary>
     public class GameViewModel : Screen
     {
+        #region User Control properties and methods
+
+        /// <summary>
+        /// Private variable to hold the events
+        /// </summary>
+        private IEventAggregator _events;
+
+        /// <summary>
+        /// Runs when the GameViewModel is loaded
+        /// </summary>
+        public GameViewModel(IEventAggregator events)
+        {
+            _events = events;
+
+            //Automatically loading save
+            if (!string.IsNullOrEmpty(FileOperations.SaveLocation) && !FileOperations.SaveLocation.EndsWith("Cancelled"))
+            {
+                LoadGame();
+            }
+
+        }
+
+        #endregion
+
         #region Private backing fields
 
         #region Game private fields
@@ -681,11 +707,6 @@ namespace WPFUI.ViewModels
         public void Save()
         {
 
-            if (string.IsNullOrEmpty(FileOperations.SaveLocation))
-            {
-
-            }
-
             var data = SaveData.CreateData(PointPerSmack, Balance,
                                 ExtraHandQTY, ExtraHandPrice,
                                 SlipperQTY, SlipperPrice,
@@ -698,6 +719,88 @@ namespace WPFUI.ViewModels
 
             FileOperations.SaveData(data);
 
+        }
+
+        /// <summary>
+        /// Loads the game progrss from a file and updates all the fields
+        /// </summary>
+        public void LoadGame()
+        {
+            string data = FileOperations.LoadData();
+
+            List<GameSaveClass> list = LoadData.CreateData(data);
+
+            foreach (GameSaveClass i in list)
+            {
+                switch (i.ID)
+                {
+                    case "PointsPerSmack":
+                        PointPerSmack = i.Value;
+                        break;
+                    case "Balance":
+                        Balance = i.Value;
+                        break;
+                    case "ExtraHandQTY":
+                        ExtraHandQTY = i.Value;
+                        break;
+                    case "ExtraHandPrice":
+                        ExtraHandPrice = i.Value;
+                        break;
+                    case "SlipperQTY":
+                        SlipperQTY = i.Value;
+                        break;
+                    case "SlipperPrice":
+                        SlipperPrice = i.Value;
+                        break;
+                    case "ShoeQTY":
+                        ShoeQTY = i.Value;
+                        break;
+                    case "ShoePrice":
+                        ShoePrice = i.Value;
+                        break;
+                    case "PhoneBookQTY":
+                        PhoneBookQTY = i.Value;
+                        break;
+                    case "PhoneBookPrice":
+                        PhoneBookPrice = i.Value;
+                        break;
+                    case "KeyboardQTY":
+                        KeyboardQTY = i.Value;
+                        break;
+                    case "KeyboardPrice":
+                        KeyboardPrice = i.Value;
+                        break;
+                    case "StickyQTY":
+                        StickQTY = i.Value;
+                        break;
+                    case "StickPrice":
+                        StickPrice = i.Value;
+                        break;
+                    case "HammerQTY":
+                        HammerQTY = i.Value;
+                        break;
+                    case "HammerPrice":
+                        HammerPrice = i.Value;
+                        break;
+                    case "MicrowaveQTY":
+                        MicrowaveQTY = i.Value;
+                        break;
+                    case "MicrowavePrice":
+                        MicrowavePrice = i.Value;
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Used to exit the application
+        /// </summary>
+        public void Exit()
+        {
+            //Saving before exiting
+            Save();
+            //Launch the load screen
+            _events.BeginPublishOnUIThread(new LoadEvent());
         }
 
         #endregion
