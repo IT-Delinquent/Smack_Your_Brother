@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WPFUI.EventModels;
+using WPFUI.Helpers;
+using WPFUI.Models;
 using WPFUI.SaveGameOperations;
 
 namespace WPFUI.ViewModels
@@ -25,6 +27,8 @@ namespace WPFUI.ViewModels
         /// <param name="events">The events</param>
         public LoadViewModel(IEventAggregator events)
         {
+            //Clear the saved location
+            FileOperations.SaveLocation = string.Empty;
             //Updates the events private variables
             _events = events;
         }
@@ -34,9 +38,8 @@ namespace WPFUI.ViewModels
         /// </summary>
         public void NewGame()
         {
-            //Clear the saved location
-            FileOperations.SaveLocation = "";
             //Launches the LoadGameEvent
+            GameViewModel.LoadList = new List<GameSaveClass>() { new GameSaveClass { ID = "DummyFromNewGame", Value = 1.0 } };
             _events.PublishOnUIThread(new LoadGameEvent());
         }
 
@@ -45,15 +48,39 @@ namespace WPFUI.ViewModels
         /// </summary>
         public void LoadGame()
         {
-            //Clear the saved location 
-            FileOperations.SaveLocation = "";
-            FileOperations.SelectSaveLocation();
+            FileOperations.SelectLoadLocation();
 
-            //If the SaveLocation still doesn't have a value
-            //Don't do anything
-            if (FileOperations.SaveLocation != "Cancelled")
+            /*
+             At this point the value of SaveLocation could either be a valid path or "Cancelled"
+            */
+
+            if (FileOperations.SaveLocation != "Cancelled") 
             {
-                _events.BeginPublishOnUIThread(new LoadGameEvent());
+                string loadResponse = FileOperations.LoadData();
+                //Try to load the file 
+                if (loadResponse.StartsWith("Failed")) 
+                {
+                    //Loading the file failed
+                    PopupHelper.ShowPopup("FAILED", loadResponse.Replace("Failed", ""));
+                }
+                else
+                {
+                    //Try to parse the loadResponse
+                    List<GameSaveClass> parseResponse = LoadData.CreateData(loadResponse);
+
+                    if (parseResponse.Count() == 1)
+                    {
+                        //The parsed data only contains one entry, the load has failed
+                        PopupHelper.ShowPopup("FAILED", "File format not recognised");
+                    }
+                    else
+                    {
+                        //Load checks have passed, launch the game
+                        GameViewModel.LoadList = parseResponse;
+                        _events.PublishOnUIThread(new LoadGameEvent());
+                        PopupHelper.ShowPopup("LOADED", "Your save file has been loaded");
+                    }
+                }
             }
         }
     }

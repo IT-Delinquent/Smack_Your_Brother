@@ -8,7 +8,6 @@
                 <ControlTemplate TargetType="{x:Type UserControl}">
                     <Border Background="{StaticResource BackGradient}"
                             BorderBrush="{StaticResource DBlueBorder}" BorderThickness="4"
-                            MaxWidth="500"
                             >
                         <ContentPresenter />
                     </Border>

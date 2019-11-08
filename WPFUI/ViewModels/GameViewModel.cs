@@ -26,18 +26,29 @@ namespace WPFUI.ViewModels
         private IEventAggregator _events;
 
         /// <summary>
+        /// Used to check if loading a save failed
+        /// </summary>
+        public static bool LoadFailed = true;
+
+        /// <summary>
+        /// Used to store the values when loading a game
+        /// </summary>
+        public static List<GameSaveClass> LoadList; 
+
+        /// <summary>
         /// Runs when the GameViewModel is loaded
         /// </summary>
         public GameViewModel(IEventAggregator events)
         {
             _events = events;
 
-            //Automatically loading save
-            if (!string.IsNullOrEmpty(FileOperations.SaveLocation) && !FileOperations.SaveLocation.EndsWith("Cancelled"))
+            //Loading a save 
+            List<GameSaveClass> _tempList = LoadList;
+
+            if (_tempList?.Count() > 0)
             {
                 LoadGame();
             }
-
         }
 
         #endregion
@@ -707,7 +718,7 @@ namespace WPFUI.ViewModels
         public void Save()
         {
 
-            var data = SaveData.CreateData(PointPerSmack, Balance,
+            string data = SaveData.CreateData(PointPerSmack, Balance,
                                 ExtraHandQTY, ExtraHandPrice,
                                 SlipperQTY, SlipperPrice,
                                 ShoeQTY, ShoePrice,
@@ -726,11 +737,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         public void LoadGame()
         {
-            string data = FileOperations.LoadData();
-
-            List<GameSaveClass> list = LoadData.CreateData(data);
-
-            foreach (GameSaveClass i in list)
+            foreach (GameSaveClass i in LoadList)
             {
                 switch (i.ID)
                 {

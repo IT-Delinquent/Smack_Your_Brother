@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFUI.Views"
         mc:Ignorable="d"
         Title="Smack Your Brother" Height="600" Width="900" Background="{StaticResource BackGradient}" >
-    <Grid>
-        <ContentControl x:Name="ActiveItem"/>
-    </Grid>
+    <DockPanel>
+        <ContentControl x:Name="ActiveItem" />
+    </DockPanel>
 </Window>

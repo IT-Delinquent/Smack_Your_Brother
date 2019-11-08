@@ -45,62 +45,52 @@ namespace WPFUI.SaveGameOperations
         /// Used to get a new save location and populate SaveLocation
         /// </summary>
         /// <returns></returns>
-        public static void NewSaveLocation()
+        public static void SelectSaveLocation()
         {
             SaveFileDialog saveDialog = new SaveFileDialog
             {
                 Title = "Save your game",
-                FileName = _defaultSaveName,
-                InitialDirectory = _defaultSaveLocation
+                InitialDirectory = _defaultSaveLocation,
+                Filter = "TXT Files|*.txt"
             };
 
-            var dialogResult = saveDialog.ShowDialog();
+            saveDialog.ShowDialog();
 
-            if (dialogResult == DialogResult.OK)
-            {
-                if (saveDialog.FileName != "")
-                {
-                    //Update the save location
-                    SaveLocation = saveDialog.FileName;
-                }
-            }
-            else if (dialogResult == DialogResult.Cancel)
-            {
-                //Display popup
-                PopupHelper.ShowPopup("NOT SAVED!", $"Your game has not been saved");
-                SaveLocation = "Cancelled";
+            if (!string.IsNullOrEmpty(saveDialog.FileName))
+            { 
+                SaveLocation = saveDialog.FileName;
             }
             else
             {
-                //Use the default location
-                SaveLocation = _defaultSaveLocation;
+                SaveLocation = "Cancelled";
             }
+
             saveDialog.Dispose();
         }
 
         /// <summary>
         /// Used to select a pre-existing save file and populate SaveLocation
         /// </summary>
-        public static void SelectSaveLocation()
+        public static void SelectLoadLocation()
         {
-            OpenFileDialog saveDialog = new OpenFileDialog
+            OpenFileDialog openDialog = new OpenFileDialog
             {
                 Title = "Select the game save",
                 Filter = "TXT Files|*.txt",
                 InitialDirectory = _defaultSaveLocation
             };
 
-            var dialogResult = saveDialog.ShowDialog();
+            var dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == DialogResult.OK)
             {
                 //Update the save location
-                SaveLocation = saveDialog.FileName;
-            }else if (dialogResult == DialogResult.Cancel)
+                SaveLocation = openDialog.FileName;
+            }else
             {
                 SaveLocation = "Cancelled";
             }
-            saveDialog.Dispose();
+            openDialog.Dispose();
         }
 
         /// <summary>
@@ -109,24 +99,36 @@ namespace WPFUI.SaveGameOperations
         /// <param name="json"></param>
         public static void SaveData(string json)
         {
-            if (SaveLocation != "Cancelled")
+            if (string.IsNullOrEmpty(SaveLocation) || SaveLocation == "Cancelled")
             {
-                if (string.IsNullOrEmpty(SaveLocation))
-                {
-                    NewSaveLocation();
-                }
+                //No save exists, ask to make one
+                SelectSaveLocation();
+            }
 
-                if (SaveLocation != "Cancelled")
-                {
-                    File.WriteAllText(SaveLocation, json);
-                    //Display popup
-                    PopupHelper.ShowPopup("SAVED!", $"Your game has been saved to: {SaveLocation}");
-                }
+            if (SaveLocation == "Cancelled")
+            {
+                //User cancelled the prompt, don't save
+                PopupHelper.ShowPopup("NOT SAVED!", "Suit Yourself, your game hasn't been saved");
+            }
+            else if (!SaveLocation.EndsWith(".txt"))
+            {
+                //The user selected a file that isn't a TXT file
+                PopupHelper.ShowPopup("NOT SAVED!", "Nice try, the save file must be a text file");
+                SaveLocation = string.Empty;
             }
             else
             {
-                NewSaveLocation();
+                try
+                {
+                    File.WriteAllText(SaveLocation, json);
+                    PopupHelper.ShowPopup("SAVED!", $"Congrats, your game has been saved to: {SaveLocation}");
+                }
+                catch (Exception e)
+                {
+                    PopupHelper.ShowPopup("FAILED", e.Message);
+                }
             }
+
         }
 
         /// <summary>
@@ -135,12 +137,21 @@ namespace WPFUI.SaveGameOperations
         /// <returns></returns>
         public static string LoadData()
         {
-            if (string.IsNullOrEmpty(SaveLocation))
+            string output;
+
+            try
             {
-                SelectSaveLocation();
+                output = File.ReadAllText(SaveLocation);
+                if (string.IsNullOrEmpty(output)){
+                    output = "Failed Empty file";
+                }
+            }
+            catch (Exception e)
+            {
+                output = $"Failed {e.Message}";
             }
 
-            return File.ReadAllText(SaveLocation);
+            return output;
         }
     }
 }
