@@ -75,7 +75,7 @@ namespace WPFUI.SaveGameOperations
         {
             OpenFileDialog openDialog = new OpenFileDialog
             {
-                Title = "Select the game save",
+                Title = "Select your save",
                 Filter = "TXT Files|*.txt",
                 InitialDirectory = _defaultSaveLocation
             };
@@ -143,7 +143,7 @@ namespace WPFUI.SaveGameOperations
             {
                 output = File.ReadAllText(SaveLocation);
                 if (string.IsNullOrEmpty(output)){
-                    output = "Failed Empty file";
+                    output = "Errrr, that file was empty";
                 }
             }
             catch (Exception e)

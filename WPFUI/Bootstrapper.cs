@@ -9,6 +9,9 @@ using WPFUI.ViewModels;
 
 namespace WPFUI
 {
+    /// <summary>
+    /// Contains the base methods for the bootstrapper class
+    /// </summary>
     public class Bootstrapper : BootstrapperBase
     {
         private SimpleContainer _container = new SimpleContainer();

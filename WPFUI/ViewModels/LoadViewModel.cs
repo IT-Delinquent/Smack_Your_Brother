@@ -71,14 +71,14 @@ namespace WPFUI.ViewModels
                     if (parseResponse.Count() == 1)
                     {
                         //The parsed data only contains one entry, the load has failed
-                        PopupHelper.ShowPopup("FAILED", "File format not recognised");
+                        PopupHelper.ShowPopup("FAILED", "Beep Boop, file format not recognised");
                     }
                     else
                     {
                         //Load checks have passed, launch the game
                         GameViewModel.LoadList = parseResponse;
                         _events.PublishOnUIThread(new LoadGameEvent());
-                        PopupHelper.ShowPopup("LOADED", "Your save file has been loaded");
+                        PopupHelper.ShowPopup("LOADED", "Woop! Your game has been loaded");
                     }
                 }
             }

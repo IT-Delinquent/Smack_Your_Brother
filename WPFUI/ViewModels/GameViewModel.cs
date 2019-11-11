@@ -23,12 +23,7 @@ namespace WPFUI.ViewModels
         /// <summary>
         /// Private variable to hold the events
         /// </summary>
-        private IEventAggregator _events;
-
-        /// <summary>
-        /// Used to check if loading a save failed
-        /// </summary>
-        public static bool LoadFailed = true;
+        private readonly IEventAggregator _events;
 
         /// <summary>
         /// Used to store the values when loading a game
@@ -40,13 +35,16 @@ namespace WPFUI.ViewModels
         /// </summary>
         public GameViewModel(IEventAggregator events)
         {
+            //Assigning the events variable
             _events = events;
 
             //Loading a save 
             List<GameSaveClass> _tempList = LoadList;
 
+            //Check if the templist count is greater than zero
             if (_tempList?.Count() > 0)
             {
+                //Run the functions that loads the game save
                 LoadGame();
             }
         }
@@ -80,7 +78,7 @@ namespace WPFUI.ViewModels
         /// Holds the reward added to the per smack value when
         /// buying an extra hand
         /// </summary>
-        private int _extraHandReward = 1;
+        private readonly int _extraHandReward = 1;
 
         /// <summary>
         /// The price of an extra hand when first starting the game
@@ -100,7 +98,7 @@ namespace WPFUI.ViewModels
         /// Holds the reward added to the per smack value
         /// when buying a slipper
         /// </summary>
-        private int _slipperReward = 3;
+        private readonly int _slipperReward = 3;
 
         /// <summary>
         /// The price of a slipper when first starting the game
@@ -120,7 +118,7 @@ namespace WPFUI.ViewModels
         /// Holds the reward added to the per smack values
         /// when buying a shoe
         /// </summary>
-        private double _shoeReward = 5;
+        private readonly double _shoeReward = 5;
 
         /// <summary>
         /// The price of a shoe when first starting the game
@@ -140,7 +138,7 @@ namespace WPFUI.ViewModels
         /// Holds the reward added to the per smack values 
         /// when buying a phonebook
         /// </summary>
-        private double _phoneBookReward = 8;
+        private readonly double _phoneBookReward = 8;
 
         /// <summary>
         /// The price of a phoneBook when first starting the game
@@ -160,7 +158,7 @@ namespace WPFUI.ViewModels
         /// Holds the reward added to the per smack values 
         /// when buying a keyboard
         /// </summary>
-        private double _keyboardReward = 12;
+        private readonly double _keyboardReward = 12;
 
         /// <summary>
         /// The price of a keyboard when first starting the game
@@ -180,7 +178,7 @@ namespace WPFUI.ViewModels
         /// Holds the reward added to the per smack values 
         /// when buying a stick
         /// </summary>
-        private double _stickReward = 20;
+        private readonly double _stickReward = 20;
 
         /// <summary>
         /// The price of a stick when first starting the game
@@ -200,7 +198,7 @@ namespace WPFUI.ViewModels
         /// Holds the reward added to the per smack values 
         /// when buying a hammer
         /// </summary>
-        private double _hammerReward = 50;
+        private readonly double _hammerReward = 50;
 
         /// <summary>
         /// The price of a hammer when first starting the game
@@ -220,7 +218,7 @@ namespace WPFUI.ViewModels
         /// Holds the reward added to the per smack values 
         /// when buying a microwave
         /// </summary>
-        private double _microwaveReward = 80;
+        private readonly double _microwaveReward = 80;
 
         /// <summary>
         /// The price of a microwave when first starting the game
