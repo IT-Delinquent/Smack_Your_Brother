@@ -108,7 +108,7 @@ namespace WPFUI.SaveGameOperations
             if (SaveLocation == "Cancelled")
             {
                 //User cancelled the prompt, don't save
-                PopupHelper.ShowPopup("NOT SAVED!", "Suit Yourself, your game hasn't been saved");
+                PopupHelper.ShowPopup("NOT SAVED!", "Suit yourself, your game hasn't been saved");
             }
             else if (!SaveLocation.EndsWith(".txt"))
             {
@@ -120,15 +120,16 @@ namespace WPFUI.SaveGameOperations
             {
                 try
                 {
+                    //Try to save to disk
                     File.WriteAllText(SaveLocation, json);
                     PopupHelper.ShowPopup("SAVED!", $"Congrats, your game has been saved to: {SaveLocation}");
                 }
                 catch (Exception e)
                 {
+                    //Saving failed 
                     PopupHelper.ShowPopup("FAILED", e.Message);
                 }
             }
-
         }
 
         /// <summary>
