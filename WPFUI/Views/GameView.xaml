@@ -74,7 +74,7 @@
                             <!-- upgrade image -->
                             <Image Source="/Smack Your Brother;component/Assets/Images/ExtraHand.png" Grid.RowSpan="2" Margin="5"/>
                             <!-- upgrade name -->
-                            <TextBlock Grid.Column="1" Text="ExtraHand" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                            <TextBlock Grid.Column="1" Text="Extra Hand" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 0 0"/>
                             <!-- upgrade counter -->
                             <Button x:Name="ExtraHand" Grid.Column="2" Grid.RowSpan="2" Background="{StaticResource DOrangeBorder}" Style="{StaticResource BuyButtonStyle}"/>
                             <Viewbox Grid.Column="2" Grid.RowSpan="2" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
