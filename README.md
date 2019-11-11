@@ -1,7 +1,7 @@
 # Smack Your Brother
 ### A small clicker game themed around smacking your brother - Apologies for those who can't relate 🤷‍♂️
 
-As the title and sub-title said, this is a small WPF/C# game that is designed around smacking your brother. The game currently has a big button that signifies "smacking" your brother. I want to eventually add a nice little animation or something here but I'm not creative in the slightest 😩
+As the title and sub-title said, this is a small WPF/C# game that is designed around smacking your brother. The game currently has a big button that signifies "smacking" your brother. I want to eventually add a nice little animation or something here but I'm not creative in the slightest 😩 I also used [Caliburn Micro](https://github.com/Caliburn-Micro/Caliburn.Micro) for the MVVM backing 🙌 👨‍💻
 
 The game also has a number of "upgrades" that can  be purchased to increase the amount of points that are rewarded with each smack. The current upgrades include:
 
