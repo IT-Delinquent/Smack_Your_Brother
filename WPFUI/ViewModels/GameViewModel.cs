@@ -775,7 +775,7 @@ namespace WPFUI.ViewModels
                     case "KeyboardPrice":
                         KeyboardPrice = i.Value;
                         break;
-                    case "StickyQTY":
+                    case "StickQTY":
                         StickQTY = i.Value;
                         break;
                     case "StickPrice":
