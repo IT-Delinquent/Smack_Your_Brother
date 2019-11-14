@@ -29,4 +29,4 @@ I will put a little gif of the game here soon 🕹️:
 ## UPDATES
 | Date | Changes
 |:-----:|:-------:|
-| 14/11/2019 | Added stats popup. Added stats to load and save procedures. Fixed some save and load messages. See commit for full info
+| 14/11/2019 | Added stats popup. Added stats to load and save procedures. Fixed some save and load messages. Half way through styling the stats DataGrid. See commit for full info
