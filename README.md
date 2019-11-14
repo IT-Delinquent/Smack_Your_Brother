@@ -25,3 +25,8 @@ You can also save and load your game data so that you don't lose your progress. 
 
 I will put a little gif of the game here soon 🕹️: 
 [GIF_HERE]
+
+## UPDATES
+| Date | Changes
+|:-----:|:-------:|
+| 14/11/2019 | Added stats popup. Added stats to load and save procedures. Fixed some save and load messages. Half way through styling the stats DataGrid. See commit for full info
