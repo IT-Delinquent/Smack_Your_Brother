@@ -40,6 +40,7 @@
                 <!-- Save and exit buttons -->
                 <StackPanel Grid.Row="4" Orientation="Horizontal">
                     <Button x:Name="Save" Content="Save" Style="{StaticResource GenericButtonStyle}" Margin="0 0 10 0"/>
+                    <Button x:Name="Stats" Content="Stats" Style="{StaticResource GenericButtonStyle}" Margin="0 0 10 0"/>
                     <Button x:Name="Exit" Content="Exit" Style="{StaticResource GenericButtonStyle}"/>
                 </StackPanel>
                 

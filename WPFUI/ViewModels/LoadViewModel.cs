@@ -54,8 +54,15 @@ namespace WPFUI.ViewModels
              At this point the value of SaveLocation could either be a valid path or "Cancelled"
             */
 
+            //Checking the save location isn't cancelled, if it is then do nothing
             if (FileOperations.SaveLocation != "Cancelled") 
             {
+                //If the save location isn't a txt file, return and do nothing
+                if (!FileOperations.SaveLocation.EndsWith(".txt"))
+                {
+                    PopupHelper.ShowPopup("FAILED", "Nice try, the save file must be a text file");
+                    return;
+                }
                 string loadResponse = FileOperations.LoadData();
                 //Try to load the file 
                 if (loadResponse.StartsWith("Failed")) 
@@ -71,7 +78,7 @@ namespace WPFUI.ViewModels
                     if (parseResponse.Count() == 1)
                     {
                         //The parsed data only contains one entry, the load has failed
-                        PopupHelper.ShowPopup("FAILED", "Beep Boop, file format not recognised");
+                        PopupHelper.ShowPopup("FAILED", "Beep Boop, data not recognised");
                     }
                     else
                     {

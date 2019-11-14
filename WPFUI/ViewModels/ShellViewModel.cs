@@ -26,6 +26,11 @@ namespace WPFUI.ViewModels
         private static PopupViewModel _popup;
 
         /// <summary>
+        /// Holds the instance of the StatsPopupViewModel
+        /// </summary>
+        private static StatsPopupViewModel _statsPopup;
+
+        /// <summary>
         /// Used to return the window manager
         /// </summary>
         /// <returns>The IWindowManager</returns>
@@ -35,7 +40,7 @@ namespace WPFUI.ViewModels
         }
 
         /// <summary>
-        /// Used to return the pop view model
+        /// Used to return the PopupViewModel
         /// </summary>
         /// <returns>The PopupViewModel</returns>
         public static PopupViewModel GetPopup()
@@ -44,15 +49,26 @@ namespace WPFUI.ViewModels
         }
 
         /// <summary>
+        /// Used to return the StatsPopupViewModel
+        /// </summary>
+        /// <returns></returns>
+        public static StatsPopupViewModel GetStatsPopup()
+        {
+            return _statsPopup;
+        }
+
+        /// <summary>
         /// The main block of the ShellViewModel
         /// </summary>
         /// <param name="events">The event handler for the application</param>
         /// <param name="window">The window manager</param>
         /// <param name="popup">The popup viewmodel</param>
-        public ShellViewModel(IEventAggregator events, IWindowManager window, PopupViewModel popup)
+        /// <param name="statsPopup">The stats popup viewmodel</param>
+        public ShellViewModel(IEventAggregator events, IWindowManager window, PopupViewModel popup, StatsPopupViewModel statsPopup)
         {
             _window = window;
             _popup = popup;
+            _statsPopup = statsPopup;
 
             _events = events;
             _events.Subscribe(this);

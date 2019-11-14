@@ -99,7 +99,8 @@ namespace WPFUI.SaveGameOperations
         /// <param name="json"></param>
         public static void SaveData(string json)
         {
-            if (string.IsNullOrEmpty(SaveLocation) || SaveLocation == "Cancelled")
+            //Checks if the save location is empty, cancelled or not a txt file
+            if (string.IsNullOrEmpty(SaveLocation) || SaveLocation == "Cancelled" || !SaveLocation.EndsWith(".txt"))
             {
                 //No save exists, ask to make one
                 SelectSaveLocation();

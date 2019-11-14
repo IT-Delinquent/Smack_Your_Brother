@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WPFUI.Models;
 using WPFUI.ViewModels;
 
 namespace WPFUI.Helpers
@@ -24,6 +25,11 @@ namespace WPFUI.Helpers
         /// Holds the passed in PopupViewModel object
         /// </summary>
         private static PopupViewModel _popup;
+
+        /// <summary>
+        /// Holds the passed in StatsPopupViewModel object
+        /// </summary>
+        private static StatsPopupViewModel _statsPopup;
 
         /// <summary>
         /// Used to setup the settings for the showdialog popup
@@ -50,6 +56,19 @@ namespace WPFUI.Helpers
 
             _popup.UpdatePopup(header, message);
             _window.ShowDialog(_popup, null, GetSettings());
+        }
+
+        /// <summary>
+        /// Displays the stats popup using a List fo GameSaveClass
+        /// </summary>
+        /// <param name="stats">A list of all the stats that have been passed in</param>
+        public static void ShowStatsPopup(List<GameSaveClass> stats)
+        {
+            _window = ShellViewModel.GetWindowManager();
+            _statsPopup = ShellViewModel.GetStatsPopup();
+
+            _statsPopup.UpdateStats(stats);
+            _window.ShowDialog(_statsPopup, null, GetSettings());
         }
     }
 }

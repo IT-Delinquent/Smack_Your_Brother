@@ -65,6 +65,11 @@ namespace WPFUI.ViewModels
         /// </summary>
         private double _balance = 0;
 
+        /// <summary>
+        /// Holds the current total of clicks
+        /// </summary>
+        private int _totalClicks;
+
         #endregion
 
         #region ExtraHand private fields
@@ -239,7 +244,9 @@ namespace WPFUI.ViewModels
             get { return _balance; }
             set 
             { 
+                //Update balance
                 _balance = value;
+                //Notify all upgrade buttons
                 NotifyOfPropertyChange(() => Balance);
                 NotifyOfPropertyChange(() => CanExtraHand);
                 NotifyOfPropertyChange(() => CanSlipper);
@@ -262,6 +269,37 @@ namespace WPFUI.ViewModels
             {
                 _pointPerSmack = value;
                 NotifyOfPropertyChange(() => PointPerSmack);
+            }
+        }
+
+        /// <summary>
+        /// Used to hold the amount of clicks that have happened
+        /// </summary>
+        public int TotalClicks
+        {
+            get { return _totalClicks; }
+            set
+            {
+                _totalClicks = value;
+                NotifyOfPropertyChange(() => TotalClicks);
+            }
+        }
+
+        /// <summary>
+        /// Used to return the total amount of upgrades that are owned
+        /// </summary>
+        public double TotalUpgrades
+        {
+            get
+            {
+                return ExtraHandQTY +
+                    SlipperQTY +
+                    ShoeQTY +
+                    PhoneBookQTY +
+                    KeyboardQTY +
+                    StickQTY +
+                    HammerQTY +
+                    MicrowaveQTY;
             }
         }
 
@@ -708,6 +746,7 @@ namespace WPFUI.ViewModels
         public void Smack()
         {
             Balance += PointPerSmack;
+            TotalClicks++;
         }
 
         /// <summary>
@@ -716,7 +755,7 @@ namespace WPFUI.ViewModels
         public void Save()
         {
 
-            string data = SaveData.CreateData(PointPerSmack, Balance,
+            string data = SaveData.CreateData(PointPerSmack, Balance, TotalClicks,
                                 ExtraHandQTY, ExtraHandPrice,
                                 SlipperQTY, SlipperPrice,
                                 ShoeQTY, ShoePrice,
@@ -744,6 +783,9 @@ namespace WPFUI.ViewModels
                         break;
                     case "Balance":
                         Balance = i.Value;
+                        break;
+                    case "TotalClicks":
+                        TotalClicks = (int)i.Value;
                         break;
                     case "ExtraHandQTY":
                         ExtraHandQTY = i.Value;
@@ -795,6 +837,22 @@ namespace WPFUI.ViewModels
                         break;
                 }
             }
+        }
+
+        /// <summary>
+        /// Used to show the stats popup
+        /// </summary>
+        public void Stats()
+        {
+            //Building a temporary list with the required stats
+            List<GameSaveClass> _tempList = new List<GameSaveClass>
+            {
+                new GameSaveClass { ID = "Total Clicks", Value = TotalClicks },
+                new GameSaveClass { ID = "Total Upgrades", Value = TotalUpgrades }
+            };
+
+            //Updating the popup and displaying it
+            PopupHelper.ShowStatsPopup(_tempList);
         }
 
         /// <summary>
