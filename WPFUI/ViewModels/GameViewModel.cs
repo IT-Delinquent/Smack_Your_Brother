@@ -747,6 +747,7 @@ namespace WPFUI.ViewModels
         {
             Balance += PointPerSmack;
             TotalClicks++;
+            Sounds.PlayRandomSmack();
         }
 
         /// <summary>

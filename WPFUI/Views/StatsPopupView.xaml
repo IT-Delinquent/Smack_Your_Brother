@@ -16,9 +16,19 @@
         <!-- STATS title -->
         <TextBlock Grid.Row="0" Text="STATS" HorizontalAlignment="Center" Margin="10" />
         <!-- All the stats-->
-        <DataGrid x:Name="Stats" Grid.Row="1" Margin="10" Template="{DynamicResource DataGridStyle}">
-
-        </DataGrid>
+        <ScrollViewer Grid.Row="1" Margin="10">
+            <ItemsControl x:Name="Stats" ItemsSource="{Binding Stats}" >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding ID}" HorizontalAlignment="Left" Foreground="{StaticResource LOrangeBorder}"/>
+                            <TextBlock Text=":" Margin="0 0 5 0" Foreground="{StaticResource LOrangeBorder}"/>
+                            <TextBlock Text="{Binding Value}" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
         <!-- Close button -->
         <Button Grid.Row="2" x:Name="Close" Content="Close" HorizontalAlignment="Center" Margin="5" Style="{StaticResource GenericButtonStyle}"/>
     </Grid>

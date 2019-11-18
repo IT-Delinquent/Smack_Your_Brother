@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using WPFUI.EventModels;
+using WPFUI.Helpers;
 
 namespace WPFUI.ViewModels
 {
@@ -64,7 +66,7 @@ namespace WPFUI.ViewModels
         /// <param name="window">The window manager</param>
         /// <param name="popup">The popup viewmodel</param>
         /// <param name="statsPopup">The stats popup viewmodel</param>
-        public ShellViewModel(IEventAggregator events, IWindowManager window, PopupViewModel popup, StatsPopupViewModel statsPopup)
+        public ShellViewModel(IEventAggregator events,IWindowManager window, PopupViewModel popup, StatsPopupViewModel statsPopup)
         {
             _window = window;
             _popup = popup;
@@ -74,6 +76,9 @@ namespace WPFUI.ViewModels
             _events.Subscribe(this);
 
             _events.PublishOnUIThread(new LoadEvent());
+
+            //Start the music continuously 
+            Sounds.StartBackgroundMusic();
         }
 
         /// <summary>
@@ -92,6 +97,14 @@ namespace WPFUI.ViewModels
         public void Handle(LoadGameEvent message)
         {
             ActivateItem(new GameViewModel(_events));
+        }
+
+        /// <summary>
+        /// When the application is exited, dispose of background music object
+        /// </summary>
+        public void OnClose()
+        {
+            Sounds.StopBackgroundMusic();
         }
     }
 }

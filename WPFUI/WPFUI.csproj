@@ -87,6 +87,7 @@
     <Compile Include="EventModels\LoadEvent.cs" />
     <Compile Include="EventModels\LoadGameEvent.cs" />
     <Compile Include="Helpers\PopupHelper.cs" />
+    <Compile Include="Helpers\Sounds.cs" />
     <Compile Include="Models\GameSaveClass.cs" />
     <Compile Include="SaveGameOperations\FileOperations.cs" />
     <Compile Include="SaveGameOperations\LoadData.cs" />
@@ -148,10 +149,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\Colours.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\DataGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,6 +219,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\Microwave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Sounds\backgroundmusic.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Sounds\punch1.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Sounds\punch2.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

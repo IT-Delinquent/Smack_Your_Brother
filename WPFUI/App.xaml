@@ -15,6 +15,7 @@
                 <Setter Property="Background" Value="Gray"/>
             </Style>
             
+            <!-- Adding all the resources -->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <local:Bootstrapper x:Key="Bootstrapper"/>
@@ -25,7 +26,6 @@
                 <ResourceDictionary Source="/Styles/TextBlocks.xaml"/>
                 <ResourceDictionary Source="/Styles/ScrollBar.xaml"/>
                 <ResourceDictionary Source="/Styles/Popups.xaml"/>
-                <ResourceDictionary Source="/Styles/DataGrid.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
