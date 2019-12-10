@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Resources;
+using System.IO;
+using System.Reflection;
 
 namespace WPFUI.Helpers
 {
@@ -18,29 +20,53 @@ namespace WPFUI.Helpers
         /// <summary>
         /// Background music for the application
         /// </summary>
-        private static SoundPlayer _backgroundMusic = new SoundPlayer(WPFUI.Properties.Resources.backgroundmusic);
+        private static readonly MediaPlayer _backgroundMusic = new MediaPlayer();
+
+        /// <summary>
+        /// The name for the background music temp file
+        /// </summary>
+        public static readonly string BackgroundMusicFileName = "SmackYourBrotherBackgroundMusicTemp.wav";
+
+        /// <summary>
+        /// The name for the background music resource
+        /// </summary>
+        public static readonly string BackgroundMusicResourceName = "WPFUI.Assets.Sounds.backgroundmusic.wav";
 
         /// <summary>
         /// Smack one sound effect
         /// </summary>
-        private static SoundPlayer _smackSoundOne = new SoundPlayer(WPFUI.Properties.Resources.punch1);
+        private static readonly SoundPlayer _smackSoundOne = new SoundPlayer(WPFUI.Properties.Resources.punch1);
 
         /// <summary>
         /// Smack two sound effect
         /// </summary>
-        private static SoundPlayer _smackSoundTwo = new SoundPlayer(WPFUI.Properties.Resources.punch2);
+        private static readonly SoundPlayer _smackSoundTwo = new SoundPlayer(WPFUI.Properties.Resources.punch2);
 
         /// <summary>
         /// Random number for getting a smack sound effect
         /// </summary>
-        private static Random randomNumber = new Random();
+        private static readonly Random randomNumber = new Random();
 
         /// <summary>
         /// Starts the background music
         /// </summary>
         public static void StartBackgroundMusic()
         {
-            _backgroundMusic.PlayLooping();
+
+            _backgroundMusic.Open(new Uri( Path.Combine(Path.GetTempPath(), BackgroundMusicFileName)));
+            _backgroundMusic.MediaEnded += new EventHandler(BackgroundMusic_Ended);
+            _backgroundMusic.Play();
+        }
+
+        /// <summary>
+        /// Used to continuously reset the background music once it's ended
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void BackgroundMusic_Ended(object sender, EventArgs e)
+        {
+            _backgroundMusic.Position = TimeSpan.Zero;
+            _backgroundMusic.Play();
         }
 
         /// <summary>
@@ -49,7 +75,7 @@ namespace WPFUI.Helpers
         public static void StopBackgroundMusic()
         {
             _backgroundMusic.Stop();
-            _backgroundMusic.Dispose();
+            _backgroundMusic.Close();
         }
 
         /// <summary>
