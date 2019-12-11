@@ -18,7 +18,7 @@ namespace WPFUI.SaveGameOperations
         /// <summary>
         /// Used to build a list of the game save data
         /// </summary>
-        public static string CreateData(double pointsPerSmack, double balance, int totalClicks, 
+        public static string CreateData(double pointsPerSmack, double balance, double totalBalance, int totalClicks, 
                                                      double extraHandQTY, double extraHandPrice,
                                                      double slipperQTY, double slipperPrice,
                                                      double shoeQTY, double shoePrice,
@@ -33,6 +33,7 @@ namespace WPFUI.SaveGameOperations
                 //Adding all the fields into the list
                 new GameSaveClass { ID = "PointsPerSmack", Value = pointsPerSmack },
                 new GameSaveClass { ID = "Balance", Value = balance },
+                new GameSaveClass { ID = "TotalBalance", Value = totalBalance },
                 new GameSaveClass { ID = "TotalClicks", Value = totalClicks },
                 new GameSaveClass { ID = "ExtraHandQTY", Value = extraHandQTY },
                 new GameSaveClass { ID = "ExtraHandPrice", Value = extraHandPrice },

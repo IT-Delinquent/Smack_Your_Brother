@@ -31,6 +31,10 @@ namespace WPFUI.ViewModels
             }
         }
 
+        /// <summary>
+        /// Used to update the stats
+        /// </summary>
+        /// <param name="stats"></param>
         public void UpdateStats(List<GameSaveClass> stats)
         {
             _stats = new BindableCollection<GameSaveClass>(stats);

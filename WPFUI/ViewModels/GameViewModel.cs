@@ -66,6 +66,11 @@ namespace WPFUI.ViewModels
         private double _balance = 0;
 
         /// <summary>
+        /// Holds the total points ever earned
+        /// </summary>
+        private double _totalBalance = 0;
+
+        /// <summary>
         /// Holds the current total of clicks
         /// </summary>
         private int _totalClicks;
@@ -256,6 +261,18 @@ namespace WPFUI.ViewModels
                 NotifyOfPropertyChange(() => CanStick);
                 NotifyOfPropertyChange(() => CanHammer);
                 NotifyOfPropertyChange(() => CanMicrowave);
+            }
+        }
+
+        /// <summary>
+        /// Holds and updates the total of points ever earned
+        /// </summary>
+        public double TotalBalance
+        {
+            get { return _totalBalance; }
+            set
+            {
+                _totalBalance = value;
             }
         }
 
@@ -746,6 +763,7 @@ namespace WPFUI.ViewModels
         public void Smack()
         {
             Balance += PointPerSmack;
+            TotalBalance += PointPerSmack;
             TotalClicks++;
             Sounds.PlayRandomSmack();
         }
@@ -756,7 +774,7 @@ namespace WPFUI.ViewModels
         public void Save()
         {
 
-            string data = SaveData.CreateData(PointPerSmack, Balance, TotalClicks,
+            string data = SaveData.CreateData(PointPerSmack, Balance, TotalBalance, TotalClicks,
                                 ExtraHandQTY, ExtraHandPrice,
                                 SlipperQTY, SlipperPrice,
                                 ShoeQTY, ShoePrice,
@@ -784,6 +802,9 @@ namespace WPFUI.ViewModels
                         break;
                     case "Balance":
                         Balance = i.Value;
+                        break;
+                    case "TotalBalance":
+                        TotalBalance = i.Value;
                         break;
                     case "TotalClicks":
                         TotalClicks = (int)i.Value;
@@ -849,7 +870,8 @@ namespace WPFUI.ViewModels
             List<GameSaveClass> _tempList = new List<GameSaveClass>
             {
                 new GameSaveClass { ID = "Total Clicks", Value = TotalClicks },
-                new GameSaveClass { ID = "Total Upgrades", Value = TotalUpgrades }
+                new GameSaveClass { ID = "Total Upgrades", Value = TotalUpgrades },
+                new GameSaveClass { ID = "Total Balance", Value = TotalBalance }
             };
 
             //Updating the popup and displaying it
