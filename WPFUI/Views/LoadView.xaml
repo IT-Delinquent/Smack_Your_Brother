@@ -17,6 +17,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <!-- Control Grid -->
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -28,5 +29,7 @@
                 <Button x:Name="NewGame" Content="New" Style="{StaticResource GenericButtonStyle}"/>
             </StackPanel>
         </Grid>
+        <!-- Version Info -->
+        <TextBlock Text="{Binding Version, FallbackValue=N/A}" Margin="5" FontSize="12" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
     </Grid>
 </UserControl>

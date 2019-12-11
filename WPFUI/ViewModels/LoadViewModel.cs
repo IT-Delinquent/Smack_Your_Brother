@@ -17,6 +17,24 @@ namespace WPFUI.ViewModels
     public class LoadViewModel : Screen
     {
         /// <summary>
+        /// Holds the version for the program
+        /// </summary>
+        private string _version;
+
+        /// <summary>
+        /// Updates and gets the version
+        /// </summary>
+        public string Version
+        {
+            get { return _version; }
+            set 
+            { 
+                _version = value;
+                NotifyOfPropertyChange(() => Version);
+            }
+        }
+
+        /// <summary>
         /// Private variable to hold the events
         /// </summary>
         private IEventAggregator _events;
@@ -31,6 +49,8 @@ namespace WPFUI.ViewModels
             FileOperations.SaveLocation = string.Empty;
             //Updates the events private variables
             _events = events;
+            //Populate the version info
+            Version = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString(); 
         }
 
         /// <summary>
