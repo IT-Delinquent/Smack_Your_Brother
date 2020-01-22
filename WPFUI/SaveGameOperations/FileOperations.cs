@@ -97,7 +97,7 @@ namespace WPFUI.SaveGameOperations
         /// Used to write the data to the file
         /// </summary>
         /// <param name="json"></param>
-        public static void SaveData(string json)
+        public static async Task SaveDataAsync(string json)
         {
             //Checks if the save location is empty, cancelled or not a txt file
             if (string.IsNullOrEmpty(SaveLocation) || SaveLocation == "Cancelled" || !SaveLocation.EndsWith(".txt"))
@@ -122,7 +122,7 @@ namespace WPFUI.SaveGameOperations
                 try
                 {
                     //Try to save to disk
-                    File.WriteAllText(SaveLocation, json);
+                    await SaveGameDataToDiskAsync(json);
                     PopupHelper.ShowPopup("SAVED!", $"Congrats, your game has been saved to: {SaveLocation}");
                 }
                 catch (Exception e)
@@ -137,13 +137,16 @@ namespace WPFUI.SaveGameOperations
         /// Loads the game data from the file and returns it as a string
         /// </summary>
         /// <returns></returns>
-        public static string LoadData()
+        public static async Task<string> LoadData()
         {
             string output;
 
             try
             {
-                output = File.ReadAllText(SaveLocation);
+                using (var sr = new StreamReader(SaveLocation))
+                {
+                    output = await sr.ReadToEndAsync();
+                }
                 if (string.IsNullOrEmpty(output)){
                     output = "Errrr, that file was empty";
                 }
@@ -154,6 +157,18 @@ namespace WPFUI.SaveGameOperations
             }
 
             return output;
+        }
+
+        /// <summary>
+        /// Saves the game data to the save file
+        /// </summary>
+        /// <returns></returns>
+        private static async Task SaveGameDataToDiskAsync(string json)
+        {
+            using (var sw = new StreamWriter(SaveLocation))
+            {
+                await sw.WriteAsync(json);
+            }
         }
     }
 }

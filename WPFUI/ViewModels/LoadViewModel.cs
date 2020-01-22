@@ -66,7 +66,7 @@ namespace WPFUI.ViewModels
         /// <summary>
         /// The event for when the LoadGame button is pressed
         /// </summary>
-        public void LoadGame()
+        public async Task LoadGame()
         {
             FileOperations.SelectLoadLocation();
 
@@ -83,7 +83,7 @@ namespace WPFUI.ViewModels
                     PopupHelper.ShowPopup("FAILED", "Nice try, the save file must be a text file");
                     return;
                 }
-                string loadResponse = FileOperations.LoadData();
+                string loadResponse = await FileOperations.LoadData();
                 //Try to load the file 
                 if (loadResponse.StartsWith("Failed")) 
                 {

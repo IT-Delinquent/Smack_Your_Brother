@@ -771,7 +771,7 @@ namespace WPFUI.ViewModels
         /// <summary>
         /// Saves the current progress
         /// </summary>
-        public void Save()
+        public async Task SaveAsync()
         {
 
             string data = SaveData.CreateData(PointPerSmack, Balance, TotalBalance, TotalClicks,
@@ -784,7 +784,7 @@ namespace WPFUI.ViewModels
                                 HammerQTY, HammerPrice,
                                 MicrowaveQTY, MicrowavePrice);
 
-            FileOperations.SaveData(data);
+            await FileOperations.SaveDataAsync(data);
 
         }
 
@@ -881,10 +881,10 @@ namespace WPFUI.ViewModels
         /// <summary>
         /// Used to exit the application
         /// </summary>
-        public void Exit()
+        public async Task ExitAsync()
         {
             //Saving before exiting
-            Save();
+            await SaveAsync();
             //Launch the load screen
             _events.BeginPublishOnUIThread(new LoadEvent());
         }
