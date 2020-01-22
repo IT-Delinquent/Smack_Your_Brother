@@ -30,6 +30,10 @@
             </StackPanel>
         </Grid>
         <!-- Version Info -->
-        <TextBlock Text="{Binding Version, FallbackValue=N/A}" Margin="5" FontSize="12" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBlock Text="{Binding Version, FallbackValue=N/A}" Margin="5" FontSize="12" Grid.Row="2" 
+                   HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <!-- Settings Button -->
+        <Button x:Name="Settings" Style="{StaticResource SettingsButtonStyle}" Grid.Row="2" Grid.Column="2" 
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5"/>
     </Grid>
 </UserControl>
