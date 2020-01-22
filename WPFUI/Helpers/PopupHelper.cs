@@ -32,6 +32,11 @@ namespace WPFUI.Helpers
         private static StatsPopupViewModel _statsPopup;
 
         /// <summary>
+        /// Holds the passed in SettingsPopupViewModel object
+        /// </summary>
+        private static SettingsPopupViewModel _settingsPopup;
+
+        /// <summary>
         /// Used to setup the settings for the showdialog popup
         /// </summary>
         /// <returns>The settings for the popup</returns>
@@ -69,6 +74,17 @@ namespace WPFUI.Helpers
 
             _statsPopup.UpdateStats(stats);
             _window.ShowDialog(_statsPopup, null, GetSettings());
+        }
+        
+        /// <summary>
+        /// Displays the stats popup
+        /// </summary>
+        public static void ShowSettingsPopup()
+        {
+            _window = ShellViewModel.GetWindowManager();
+            _settingsPopup = ShellViewModel.GetSettingsPopup();
+
+            _window.ShowDialog(_settingsPopup, null, GetSettings());
         }
     }
 }

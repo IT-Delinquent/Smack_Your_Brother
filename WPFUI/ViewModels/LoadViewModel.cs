@@ -110,5 +110,13 @@ namespace WPFUI.ViewModels
                 }
             }
         }
+
+        /// <summary>
+        /// Used to show the settings popup
+        /// </summary>
+        public void Settings()
+        {
+            PopupHelper
+        }
     }
 }

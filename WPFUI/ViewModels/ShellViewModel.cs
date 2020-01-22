@@ -33,6 +33,11 @@ namespace WPFUI.ViewModels
         private static StatsPopupViewModel _statsPopup;
 
         /// <summary>
+        /// Holds the instance of the SettingsPopupViewModel
+        /// </summary>
+        private static SettingsPopupViewModel _settingsPopup;
+
+        /// <summary>
         /// Used to return the window manager
         /// </summary>
         /// <returns>The IWindowManager</returns>
@@ -60,17 +65,28 @@ namespace WPFUI.ViewModels
         }
 
         /// <summary>
+        /// Used to return the SettingsPopupViewModel
+        /// </summary>
+        /// <returns></returns>
+        public static SettingsPopupViewModel GetSettingsPopup()
+        {
+            return _settingsPopup;
+        }
+
+        /// <summary>
         /// The main block of the ShellViewModel
         /// </summary>
         /// <param name="events">The event handler for the application</param>
         /// <param name="window">The window manager</param>
         /// <param name="popup">The popup viewmodel</param>
         /// <param name="statsPopup">The stats popup viewmodel</param>
-        public ShellViewModel(IEventAggregator events,IWindowManager window, PopupViewModel popup, StatsPopupViewModel statsPopup)
+        public ShellViewModel(IEventAggregator events,IWindowManager window, 
+            PopupViewModel popup, StatsPopupViewModel statsPopup, SettingsPopupViewModel settingsPopup)
         {
             _window = window;
             _popup = popup;
             _statsPopup = statsPopup;
+            _settingsPopup = settingsPopup;
 
             _events = events;
             _events.Subscribe(this);
@@ -95,7 +111,5 @@ namespace WPFUI.ViewModels
         {
             ActivateItem(new GameViewModel(_events));
         }
-
-       
     }
 }
