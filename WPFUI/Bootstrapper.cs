@@ -15,6 +15,9 @@ namespace WPFUI
     /// </summary>
     public class Bootstrapper : BootstrapperBase
     {
+        /// <summary>
+        /// The container for folding ViewModels
+        /// </summary>
         private readonly SimpleContainer _container = new SimpleContainer();
 
         public Bootstrapper()
