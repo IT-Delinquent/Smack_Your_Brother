@@ -37,7 +37,7 @@ namespace WPFUI.ViewModels
         /// <summary>
         /// Private variable to hold the events
         /// </summary>
-        private IEventAggregator _events;
+        private readonly IEventAggregator _events;
 
         /// <summary>
         /// Event when the LoadViewModel is loaded

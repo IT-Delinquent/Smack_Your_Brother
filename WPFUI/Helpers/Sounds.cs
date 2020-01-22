@@ -15,7 +15,7 @@ namespace WPFUI.Helpers
     /// <summary>
     /// Contains methods for outputting sound
     /// </summary>
-    public class Sounds
+    public static class Sounds
     {
         /// <summary>
         /// Background music for the application

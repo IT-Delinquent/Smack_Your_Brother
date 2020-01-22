@@ -11,26 +11,26 @@ namespace WPFUI.Helpers
     /// <summary>
     /// Contains methods for file system interactions
     /// </summary>
-    public class DiskOperations
+    public static class DiskOperations
     {
 
         /// <summary>
         /// Saves the background music to a temp file
         /// </summary>
-        public static void SaveMusicToDisk()
+        public static async Task SaveMusicToDisk()
         {
             using (FileStream fileStream = File.Create(Path.GetTempPath() + Sounds.BackgroundMusicFileName))
             {
-                Assembly.GetExecutingAssembly().GetManifestResourceStream(Sounds.BackgroundMusicResourceName).CopyTo(fileStream);
+                await Assembly.GetExecutingAssembly().GetManifestResourceStream(Sounds.BackgroundMusicResourceName).CopyToAsync(fileStream);
             }
         }
 
         /// <summary>
         /// Removes the temp background music file
         /// </summary>
-        public static void DeleteMusicFromDisk()
+        public static async Task DeleteMusicFromDisk()
         {
-            File.Delete(Path.Combine(Path.GetTempPath(), Sounds.BackgroundMusicFileName));
+            await Task.Run(() => File.Delete(Path.Combine(Path.GetTempPath(), Sounds.BackgroundMusicFileName)));
         }
     }
 }

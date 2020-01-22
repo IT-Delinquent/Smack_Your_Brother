@@ -76,12 +76,6 @@ namespace WPFUI.ViewModels
             _events.Subscribe(this);
 
             _events.PublishOnUIThread(new LoadEvent());
-
-            //Start the music continuously 
-
-            DiskOperations.SaveMusicToDisk();
-
-            Sounds.StartBackgroundMusic();
         }
 
         /// <summary>
@@ -102,13 +96,6 @@ namespace WPFUI.ViewModels
             ActivateItem(new GameViewModel(_events));
         }
 
-        /// <summary>
-        /// When the application is exited, dispose of background music object and delete the temp file
-        /// </summary>
-        public void OnClose()
-        {
-            Sounds.StopBackgroundMusic();
-            DiskOperations.DeleteMusicFromDisk();
-        }
+       
     }
 }

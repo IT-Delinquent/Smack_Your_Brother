@@ -12,12 +12,12 @@ namespace WPFUI.SaveGameOperations
     /// <summary>
     /// Contains methods and properties for saving game data to disk
     /// </summary>
-    public class FileOperations
+    public static class FileOperations
     {
         /// <summary>
         /// Holds the default name for the game save
         /// </summary>
-        private static readonly string _defaultSaveName = "SmackYourBrotherSave.txt";
+        private const string _defaultSaveName = "SmackYourBrotherSave.txt";
 
         /// <summary>
         /// Holds the default location for the game save

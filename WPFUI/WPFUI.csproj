@@ -135,6 +135,9 @@
     </EmbeddedResource>
     <Resource Include="Assets\Fonts\Poppins-Bold.ttf" />
     <Resource Include="Assets\Fonts\Poppins-Regular.ttf" />
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

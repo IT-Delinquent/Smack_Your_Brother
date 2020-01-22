@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WPFUI.Helpers;
 using WPFUI.ViewModels;
 
 namespace WPFUI
@@ -14,7 +15,7 @@ namespace WPFUI
     /// </summary>
     public class Bootstrapper : BootstrapperBase
     {
-        private SimpleContainer _container = new SimpleContainer();
+        private readonly SimpleContainer _container = new SimpleContainer();
 
         public Bootstrapper()
         {
@@ -38,8 +39,17 @@ namespace WPFUI
                     viewModelType, viewModelType.ToString(), viewModelType));
         }
 
-        protected override void OnStartup(object sender, StartupEventArgs e)
+        /// <summary>
+        /// Controls what happens on application startup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected override async void OnStartup(object sender, StartupEventArgs e)
         {
+            //save and start the music
+            await DiskOperations.SaveMusicToDisk();
+            Sounds.StartBackgroundMusic();
+
             DisplayRootViewFor<ShellViewModel>();
         }
 
@@ -56,6 +66,18 @@ namespace WPFUI
         protected override void BuildUp(object instance)
         {
             _container.BuildUp(instance);
+        }
+
+        /// <summary>
+        /// Controls what happens on application close
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected override async void OnExit(object sender, EventArgs e)
+        {
+            //stop and delete the music
+            Sounds.StopBackgroundMusic();
+            await DiskOperations.DeleteMusicFromDisk();
         }
     }
 }
