@@ -23,8 +23,10 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Background Music" />
-                <Slider x:Name="BackgroundMusicVolume" Grid.Column="1"  Minimum="1" Maximum="100" 
-                        HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="50 0 50 0"/>
+                <Slider Value="{Binding BackgroundMusicVolume, Mode=TwoWay}"
+                        Grid.Column="1" Minimum="0" Maximum="100" TickFrequency="2"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="50 0 50 0"
+                        cal:Message.Attach="[Event ValueChanged] = [BackgroundMusicVolumeChanged]" />
             </Grid>
             <!-- Smack Sound / Purchase Sound Togglers -->
             <Grid Margin="0 20 0 0">

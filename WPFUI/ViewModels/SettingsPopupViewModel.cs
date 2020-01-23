@@ -56,6 +56,32 @@ namespace WPFUI.ViewModels
         public bool PurchaseIsChecked { get { return Sounds.PlayPurchaseSoundBool; } }
 
         /// <summary>
+        /// Holds the value for the background music volume
+        /// </summary>
+        private float _backgroundMusicVolume = 1;
+
+        /// <summary>
+        /// Accessor and modifier for the background music volume
+        /// </summary>
+        public float BackgroundMusicVolume
+        {
+            get { return _backgroundMusicVolume; }
+            set 
+            { 
+                _backgroundMusicVolume = value;
+                NotifyOfPropertyChange(() => BackgroundMusicVolume);
+            }
+        }
+
+        /// <summary>
+        /// The event for when the volume slider is changed
+        /// </summary>
+        public void BackgroundMusicVolumeChanged()
+        {
+            Sounds.SetBackgroundMusicVolume(BackgroundMusicVolume / 100.0f);
+        }
+
+        /// <summary>
         /// The close button for the settings
         /// </summary>
         public void Close()

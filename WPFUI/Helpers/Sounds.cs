@@ -94,6 +94,15 @@ namespace WPFUI.Helpers
         }
 
         /// <summary>
+        /// Set the volume of the background music
+        /// </summary>
+        /// <param name="volume"></param>
+        public static void SetBackgroundMusicVolume(float volume)
+        {
+            _backgroundMusic.Volume = volume;
+        }
+
+        /// <summary>
         /// Play a random smack sound
         /// </summary>
         public static void PlayRandomSmack()
