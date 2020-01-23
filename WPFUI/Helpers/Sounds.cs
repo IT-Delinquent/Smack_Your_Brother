@@ -43,9 +43,24 @@ namespace WPFUI.Helpers
         private static readonly SoundPlayer _smackSoundTwo = new SoundPlayer(WPFUI.Properties.Resources.punch2);
 
         /// <summary>
+        /// Purchase one sound effect
+        /// </summary>
+        private static readonly SoundPlayer _purchaseSoundOne = new SoundPlayer(WPFUI.Properties.Resources.purchase1);
+
+        /// <summary>
         /// Random number for getting a smack sound effect
         /// </summary>
         private static readonly Random randomNumber = new Random();
+
+        /// <summary>
+        /// Decides if the smack sound is played
+        /// </summary>
+        public static bool PlaySmackSoundBool = true;
+
+        /// <summary>
+        /// Decides if the purchase sound is played
+        /// </summary>
+        public static bool PlayPurchaseSoundBool = true;
 
         /// <summary>
         /// Starts the background music
@@ -83,6 +98,11 @@ namespace WPFUI.Helpers
         /// </summary>
         public static void PlayRandomSmack()
         {
+            if (!PlaySmackSoundBool)
+            {
+                return;
+            }
+
             if (randomNumber.NextDouble() < 0.5)
             {
                 _smackSoundOne.Play();
@@ -90,6 +110,17 @@ namespace WPFUI.Helpers
             else
             {
                 _smackSoundTwo.Play();
+            }
+        }
+
+        /// <summary>
+        /// Play the purchase sound
+        /// </summary>
+        public static void PlayPurchaseSound()
+        {
+            if (PlayPurchaseSoundBool)
+            {
+                _purchaseSoundOne.Play();
             }
         }
     }

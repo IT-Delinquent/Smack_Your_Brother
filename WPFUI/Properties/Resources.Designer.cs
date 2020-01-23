@@ -86,5 +86,14 @@ namespace WPFUI.Properties {
                 return ResourceManager.GetStream("punch2", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream purchase1 {
+            get {
+                return ResourceManager.GetStream("purchase1", resourceCulture);
+            }
+        }
     }
 }

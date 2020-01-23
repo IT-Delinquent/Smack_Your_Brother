@@ -45,7 +45,8 @@
                 </StackPanel>
                 
                 <!-- Settings button -->
-                <Button x:Name="Settings" Grid.Row="4" Style="{StaticResource SettingsButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Button x:Name="Settings" Grid.Row="4" Style="{StaticResource SettingsButtonStyle}" 
+                        HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
             </Grid>
         </ScrollViewer>

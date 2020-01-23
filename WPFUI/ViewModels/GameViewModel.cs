@@ -618,6 +618,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         public void ExtraHand()
         {
+            Sounds.PlayPurchaseSound();
             //Take off the price of the extra hand
             Balance -= ExtraHandPrice;
             //Increase the quantity owned
@@ -636,6 +637,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         public void Slipper()
         {
+            Sounds.PlayPurchaseSound();
             //Take off the price of the slipper
             Balance -= SlipperPrice;
             //Increase the quantity owned
@@ -654,6 +656,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         public void Shoe()
         {
+            Sounds.PlayPurchaseSound();
             //Take off the price of the shoe
             Balance -= ShoePrice;
             //Increase the quantity owned
@@ -672,6 +675,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         public void PhoneBook()
         {
+            Sounds.PlayPurchaseSound();
             //Take off the price of the shoe
             Balance -= PhoneBookPrice;
             //Increase the quantity owned
@@ -690,6 +694,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         public void Keyboard()
         {
+            Sounds.PlayPurchaseSound();
             //Take off the price of the keyboard
             Balance -= KeyboardPrice;
             //Increase the quantity owned
@@ -708,6 +713,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         public void Stick()
         {
+            Sounds.PlayPurchaseSound();
             //Take off the price of the stick
             Balance -= StickPrice;
             //Increase the quantity owned
@@ -726,6 +732,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         public void Hammer()
         {
+            Sounds.PlayPurchaseSound();
             //Take off the price of the hammer
             Balance -= HammerPrice;
             //Increase the quantity owned
@@ -744,6 +751,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         public void Microwave()
         {
+            Sounds.PlayPurchaseSound();
             //Take off the price of the microwave
             Balance -= MicrowavePrice;
             //Increase the quantity owned
@@ -887,6 +895,14 @@ namespace WPFUI.ViewModels
             await SaveAsync();
             //Launch the load screen
             _events.BeginPublishOnUIThread(new LoadEvent());
+        }
+
+        /// <summary>
+        /// Show the settings
+        /// </summary>
+        public static void Settings()
+        {
+            PopupHelper.ShowSettingsPopup();
         }
 
         #endregion
