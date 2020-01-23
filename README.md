@@ -23,10 +23,11 @@ I plan to add more upgrades and maybe more features in the future but for right 
 
 You can also save and load your game data so that you don't lose your progress. This is stored in a txt file using JSON. 
 
-I will put a little gif of the game here soon 🕹️: 
-[GIF_HERE]
+Here is a GIF of the game being played (Sped up, obviously...) 🕹️: 
+![](https://github.com/IT-Delinquent/Smack_Your_Brother/blob/master/Smack%20Your%20Brother.gif)
 
 ## UPDATES
 | Date | Changes
 |:-----:|:-------:|
+| 30/12/2019 | What I would call the first fully working program. Finished the styling of stats and sounds. Still have some improvements to add, for example: Muting and changing the volume of game sounds and music
 | 14/11/2019 | Added stats popup. Added stats to load and save procedures. Fixed some save and load messages. Half way through styling the stats DataGrid. See commit for full info
