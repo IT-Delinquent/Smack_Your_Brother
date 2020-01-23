@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WPFUI.Models;
 
 namespace WPFUI.SaveGameOperations
@@ -26,9 +22,9 @@ namespace WPFUI.SaveGameOperations
             {
                 list = JsonConvert.DeserializeObject<List<GameSaveClass>>(json);
             }
-            catch 
+            catch
             {
-                list.Add(new GameSaveClass { ID = "Dummy data", Value = 0});
+                list.Add(new GameSaveClass { ID = "Dummy data", Value = 0 });
             }
 
             return list;

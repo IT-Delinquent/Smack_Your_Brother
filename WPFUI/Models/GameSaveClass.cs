@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WPFUI.Models
+﻿namespace WPFUI.Models
 {
     /// <summary>
     /// Used to hold information about singular game data i.e Balance, PointsPerSmack

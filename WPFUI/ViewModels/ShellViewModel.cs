@@ -1,12 +1,5 @@
 ﻿using Caliburn.Micro;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using WPFUI.EventModels;
-using WPFUI.Helpers;
 
 namespace WPFUI.ViewModels
 {
@@ -80,7 +73,7 @@ namespace WPFUI.ViewModels
         /// <param name="window">The window manager</param>
         /// <param name="popup">The popup viewmodel</param>
         /// <param name="statsPopup">The stats popup viewmodel</param>
-        public ShellViewModel(IEventAggregator events,IWindowManager window, 
+        public ShellViewModel(IEventAggregator events, IWindowManager window,
             PopupViewModel popup, StatsPopupViewModel statsPopup, SettingsPopupViewModel settingsPopup)
         {
             _window = window;

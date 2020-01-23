@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace WPFUI.Helpers
 {
@@ -13,7 +9,6 @@ namespace WPFUI.Helpers
     /// </summary>
     public static class DiskOperations
     {
-
         /// <summary>
         /// Saves the background music to a temp file
         /// </summary>

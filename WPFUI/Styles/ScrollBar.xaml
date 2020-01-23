@@ -22,20 +22,20 @@
     </Style>
 
     <!-- Scroll bar style-->
-    <Style TargetType="{x:Type ScrollBar}" >
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-        <Setter Property="Foreground" Value="#FF727272"/>
+    <Style TargetType="{x:Type ScrollBar}">
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="Foreground" Value="#FF727272" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Margin" Value="-1"/>
-        <Setter Property="Width" Value="5"/>
+        <Setter Property="Margin" Value="-1" />
+        <Setter Property="Width" Value="5" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollBar}">
                     <Grid x:Name="GridRoot" Width="5" Background="{TemplateBinding Background}">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="0.00001*"/>
+                            <RowDefinition Height="0.00001*" />
                         </Grid.RowDefinitions>
-                        <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="True" Focusable="False" >
+                        <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="True" Focusable="False">
                             <Track.Thumb>
                                 <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
                             </Track.Thumb>
@@ -51,5 +51,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
 </ResourceDictionary>

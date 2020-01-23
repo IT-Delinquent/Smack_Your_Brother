@@ -1,10 +1,6 @@
 ﻿using Caliburn.Micro;
-using System;
 using System.Collections.Generic;
 using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using WPFUI.Models;
 using WPFUI.ViewModels;
@@ -75,7 +71,7 @@ namespace WPFUI.Helpers
             _statsPopup.UpdateStats(stats);
             _window.ShowDialog(_statsPopup, null, GetSettings());
         }
-        
+
         /// <summary>
         /// Displays the stats popup
         /// </summary>

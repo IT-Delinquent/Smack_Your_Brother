@@ -2,10 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media;
 using WPFUI.EventModels;
 using WPFUI.Helpers;
 using WPFUI.Models;
@@ -28,7 +25,7 @@ namespace WPFUI.ViewModels
         /// <summary>
         /// Used to store the values when loading a game
         /// </summary>
-        public static List<GameSaveClass> LoadList; 
+        public static List<GameSaveClass> LoadList;
 
         /// <summary>
         /// Runs when the GameViewModel is loaded
@@ -38,7 +35,7 @@ namespace WPFUI.ViewModels
             //Assigning the events variable
             _events = events;
 
-            //Loading a save 
+            //Loading a save
             List<GameSaveClass> _tempList = LoadList;
 
             //Check if the templist count is greater than zero
@@ -49,7 +46,7 @@ namespace WPFUI.ViewModels
             }
         }
 
-        #endregion
+        #endregion User Control properties and methods
 
         #region Private backing fields
 
@@ -75,7 +72,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         private int _totalClicks;
 
-        #endregion
+        #endregion Game private fields
 
         #region ExtraHand private fields
 
@@ -83,7 +80,7 @@ namespace WPFUI.ViewModels
         /// Holds the amount of extra hand upgrades
         /// </summary>
         private double _extraHandQTY = 0;
-        
+
         /// <summary>
         /// Holds the reward added to the per smack value when
         /// buying an extra hand
@@ -95,7 +92,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         private double _extraHandPrice = 20;
 
-        #endregion
+        #endregion ExtraHand private fields
 
         #region Slipper private fields
 
@@ -115,7 +112,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         private double _slipperPrice = 150;
 
-        #endregion
+        #endregion Slipper private fields
 
         #region Shoe private fields
 
@@ -135,7 +132,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         private double _shoePrice = 400;
 
-        #endregion
+        #endregion Shoe private fields
 
         #region PhoneBook private fields
 
@@ -145,7 +142,7 @@ namespace WPFUI.ViewModels
         private double _phoneBookQTY = 0;
 
         /// <summary>
-        /// Holds the reward added to the per smack values 
+        /// Holds the reward added to the per smack values
         /// when buying a phonebook
         /// </summary>
         private readonly double _phoneBookReward = 8;
@@ -155,7 +152,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         private double _phoneBookPrice = 2000;
 
-        #endregion
+        #endregion PhoneBook private fields
 
         #region Keyboard private fields
 
@@ -165,7 +162,7 @@ namespace WPFUI.ViewModels
         private double _keyboardQTY = 0;
 
         /// <summary>
-        /// Holds the reward added to the per smack values 
+        /// Holds the reward added to the per smack values
         /// when buying a keyboard
         /// </summary>
         private readonly double _keyboardReward = 12;
@@ -175,7 +172,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         private double _keyboardPrice = 15000;
 
-        #endregion
+        #endregion Keyboard private fields
 
         #region Stick private fields
 
@@ -185,7 +182,7 @@ namespace WPFUI.ViewModels
         private double _stickQTY = 0;
 
         /// <summary>
-        /// Holds the reward added to the per smack values 
+        /// Holds the reward added to the per smack values
         /// when buying a stick
         /// </summary>
         private readonly double _stickReward = 20;
@@ -195,7 +192,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         private double _stickPrice = 30000;
 
-        #endregion
+        #endregion Stick private fields
 
         #region Hammer private fields
 
@@ -205,7 +202,7 @@ namespace WPFUI.ViewModels
         private double _hammerQTY = 0;
 
         /// <summary>
-        /// Holds the reward added to the per smack values 
+        /// Holds the reward added to the per smack values
         /// when buying a hammer
         /// </summary>
         private readonly double _hammerReward = 50;
@@ -215,7 +212,7 @@ namespace WPFUI.ViewModels
         /// </summary>
         private double _hammerPrice = 100000;
 
-        #endregion
+        #endregion Hammer private fields
 
         #region Microwave private fields
 
@@ -225,7 +222,7 @@ namespace WPFUI.ViewModels
         private double _microwaveQTY = 0;
 
         /// <summary>
-        /// Holds the reward added to the per smack values 
+        /// Holds the reward added to the per smack values
         /// when buying a microwave
         /// </summary>
         private readonly double _microwaveReward = 80;
@@ -235,10 +232,10 @@ namespace WPFUI.ViewModels
         /// </summary>
         private double _microwavePrice = 500000;
 
-        #endregion
+        #endregion Microwave private fields
 
-        #endregion
-    
+        #endregion Private backing fields
+
         #region Game public fields
 
         /// <summary>
@@ -247,8 +244,8 @@ namespace WPFUI.ViewModels
         public double Balance
         {
             get { return _balance; }
-            set 
-            { 
+            set
+            {
                 //Update balance
                 _balance = value;
                 //Notify all upgrade buttons
@@ -320,7 +317,7 @@ namespace WPFUI.ViewModels
             }
         }
 
-        #endregion
+        #endregion Game public fields
 
         #region ExtraHand public fields
 
@@ -330,8 +327,8 @@ namespace WPFUI.ViewModels
         public double ExtraHandQTY
         {
             get { return _extraHandQTY; }
-            set 
-            { 
+            set
+            {
                 _extraHandQTY = value;
                 NotifyOfPropertyChange(() => ExtraHandQTY);
             }
@@ -343,20 +340,20 @@ namespace WPFUI.ViewModels
         public double ExtraHandPrice
         {
             get { return _extraHandPrice; }
-            set 
-            { 
+            set
+            {
                 _extraHandPrice = value;
                 NotifyOfPropertyChange(() => ExtraHandPrice);
             }
         }
 
         /// <summary>
-        /// Decides whether the buy button for an extra hand is 
+        /// Decides whether the buy button for an extra hand is
         /// enabled or disabled
         /// </summary>
         public bool CanExtraHand => Balance > ExtraHandPrice;
 
-        #endregion
+        #endregion ExtraHand public fields
 
         #region Slipper public fields
 
@@ -387,12 +384,12 @@ namespace WPFUI.ViewModels
         }
 
         /// <summary>
-        /// Decides whether the buy button for a slipper is 
+        /// Decides whether the buy button for a slipper is
         /// enabled or disabled
         /// </summary>
         public bool CanSlipper => Balance > SlipperPrice;
 
-        #endregion
+        #endregion Slipper public fields
 
         #region Shoe public fields
 
@@ -423,12 +420,12 @@ namespace WPFUI.ViewModels
         }
 
         /// <summary>
-        /// Decides whether the buy button for a shoe is enabled 
+        /// Decides whether the buy button for a shoe is enabled
         /// or disabled
         /// </summary>
         public bool CanShoe => Balance > ShoePrice;
 
-        #endregion
+        #endregion Shoe public fields
 
         #region PhoneBook public fields
 
@@ -459,12 +456,12 @@ namespace WPFUI.ViewModels
         }
 
         /// <summary>
-        /// Decides whether the buy button for a phonebook is enabled 
+        /// Decides whether the buy button for a phonebook is enabled
         /// or disabled
         /// </summary>
         public bool CanPhoneBook => Balance > PhoneBookPrice;
 
-        #endregion
+        #endregion PhoneBook public fields
 
         #region Keyboard public fields
 
@@ -495,12 +492,12 @@ namespace WPFUI.ViewModels
         }
 
         /// <summary>
-        /// Decides whether the buy button for a keyboard is enabled 
+        /// Decides whether the buy button for a keyboard is enabled
         /// or disabled
         /// </summary>
         public bool CanKeyboard => Balance > KeyboardPrice;
 
-        #endregion
+        #endregion Keyboard public fields
 
         #region Stick public fields
 
@@ -531,12 +528,12 @@ namespace WPFUI.ViewModels
         }
 
         /// <summary>
-        /// Decides whether the buy button for a stick is enabled 
+        /// Decides whether the buy button for a stick is enabled
         /// or disabled
         /// </summary>
         public bool CanStick => Balance > StickPrice;
 
-        #endregion
+        #endregion Stick public fields
 
         #region Hammer public fields
 
@@ -567,12 +564,12 @@ namespace WPFUI.ViewModels
         }
 
         /// <summary>
-        /// Decides whether the buy button for a hammer is enabled 
+        /// Decides whether the buy button for a hammer is enabled
         /// or disabled
         /// </summary>
         public bool CanHammer => Balance > HammerPrice;
 
-        #endregion
+        #endregion Hammer public fields
 
         #region Microwave public fields
 
@@ -603,12 +600,12 @@ namespace WPFUI.ViewModels
         }
 
         /// <summary>
-        /// Decides whether the buy button for a microwave is enabled 
+        /// Decides whether the buy button for a microwave is enabled
         /// or disabled
         /// </summary>
         public bool CanMicrowave => Balance > MicrowavePrice;
 
-        #endregion
+        #endregion Microwave public fields
 
         #region Game public methods
 
@@ -765,7 +762,7 @@ namespace WPFUI.ViewModels
         }
 
         /// <summary>
-        /// Performs actions when the player presses 
+        /// Performs actions when the player presses
         /// the smack button
         /// </summary>
         public void Smack()
@@ -781,7 +778,6 @@ namespace WPFUI.ViewModels
         /// </summary>
         public async Task SaveAsync()
         {
-
             string data = SaveData.CreateData(PointPerSmack, Balance, TotalBalance, TotalClicks,
                                 ExtraHandQTY, ExtraHandPrice,
                                 SlipperQTY, SlipperPrice,
@@ -793,7 +789,6 @@ namespace WPFUI.ViewModels
                                 MicrowaveQTY, MicrowavePrice);
 
             await FileOperations.SaveDataAsync(data);
-
         }
 
         /// <summary>
@@ -808,60 +803,79 @@ namespace WPFUI.ViewModels
                     case "PointsPerSmack":
                         PointPerSmack = i.Value;
                         break;
+
                     case "Balance":
                         Balance = i.Value;
                         break;
+
                     case "TotalBalance":
                         TotalBalance = i.Value;
                         break;
+
                     case "TotalClicks":
                         TotalClicks = (int)i.Value;
                         break;
+
                     case "ExtraHandQTY":
                         ExtraHandQTY = i.Value;
                         break;
+
                     case "ExtraHandPrice":
                         ExtraHandPrice = i.Value;
                         break;
+
                     case "SlipperQTY":
                         SlipperQTY = i.Value;
                         break;
+
                     case "SlipperPrice":
                         SlipperPrice = i.Value;
                         break;
+
                     case "ShoeQTY":
                         ShoeQTY = i.Value;
                         break;
+
                     case "ShoePrice":
                         ShoePrice = i.Value;
                         break;
+
                     case "PhoneBookQTY":
                         PhoneBookQTY = i.Value;
                         break;
+
                     case "PhoneBookPrice":
                         PhoneBookPrice = i.Value;
                         break;
+
                     case "KeyboardQTY":
                         KeyboardQTY = i.Value;
                         break;
+
                     case "KeyboardPrice":
                         KeyboardPrice = i.Value;
                         break;
+
                     case "StickQTY":
                         StickQTY = i.Value;
                         break;
+
                     case "StickPrice":
                         StickPrice = i.Value;
                         break;
+
                     case "HammerQTY":
                         HammerQTY = i.Value;
                         break;
+
                     case "HammerPrice":
                         HammerPrice = i.Value;
                         break;
+
                     case "MicrowaveQTY":
                         MicrowaveQTY = i.Value;
                         break;
+
                     case "MicrowavePrice":
                         MicrowavePrice = i.Value;
                         break;
@@ -905,6 +919,6 @@ namespace WPFUI.ViewModels
             PopupHelper.ShowSettingsPopup();
         }
 
-        #endregion
+        #endregion Game public methods
     }
 }

@@ -1,12 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WPFUI.Models;
-using Newtonsoft.Json;
-using System.IO;
-using System.Windows.Forms;
 
 namespace WPFUI.SaveGameOperations
 {
@@ -18,7 +12,7 @@ namespace WPFUI.SaveGameOperations
         /// <summary>
         /// Used to build a list of the game save data
         /// </summary>
-        public static string CreateData(double pointsPerSmack, double balance, double totalBalance, int totalClicks, 
+        public static string CreateData(double pointsPerSmack, double balance, double totalBalance, int totalClicks,
                                                      double extraHandQTY, double extraHandPrice,
                                                      double slipperQTY, double slipperPrice,
                                                      double shoeQTY, double shoePrice,
@@ -26,7 +20,7 @@ namespace WPFUI.SaveGameOperations
                                                      double keyboardQTY, double keyboardPrice,
                                                      double stickQTY, double stickPrice,
                                                      double hammerQTY, double hammerPrice,
-                                                     double microwaveQTY, double microwavePrice )
+                                                     double microwaveQTY, double microwavePrice)
         {
             List<GameSaveClass> SaveDataList = new List<GameSaveClass>
             {

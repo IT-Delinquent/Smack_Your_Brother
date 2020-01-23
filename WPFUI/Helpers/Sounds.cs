@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Resources;
 using System.IO;
-using System.Reflection;
+using System.Media;
+using System.Windows.Media;
 
 namespace WPFUI.Helpers
 {
@@ -67,8 +60,7 @@ namespace WPFUI.Helpers
         /// </summary>
         public static void StartBackgroundMusic()
         {
-
-            _backgroundMusic.Open(new Uri( Path.Combine(Path.GetTempPath(), BackgroundMusicFileName)));
+            _backgroundMusic.Open(new Uri(Path.Combine(Path.GetTempPath(), BackgroundMusicFileName)));
             _backgroundMusic.MediaEnded += new EventHandler(BackgroundMusic_Ended);
             _backgroundMusic.Play();
         }

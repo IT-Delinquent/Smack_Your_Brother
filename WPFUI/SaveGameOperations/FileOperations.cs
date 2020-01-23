@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WPFUI.Helpers;
@@ -35,9 +32,9 @@ namespace WPFUI.SaveGameOperations
         public static string SaveLocation
         {
             get { return _saveLocation; }
-            set 
-            { 
-                _saveLocation = value; 
+            set
+            {
+                _saveLocation = value;
             }
         }
 
@@ -57,7 +54,7 @@ namespace WPFUI.SaveGameOperations
             saveDialog.ShowDialog();
 
             if (!string.IsNullOrEmpty(saveDialog.FileName))
-            { 
+            {
                 SaveLocation = saveDialog.FileName;
             }
             else
@@ -86,7 +83,8 @@ namespace WPFUI.SaveGameOperations
             {
                 //Update the save location
                 SaveLocation = openDialog.FileName;
-            }else
+            }
+            else
             {
                 SaveLocation = "Cancelled";
             }
@@ -127,7 +125,7 @@ namespace WPFUI.SaveGameOperations
                 }
                 catch (Exception e)
                 {
-                    //Saving failed 
+                    //Saving failed
                     PopupHelper.ShowPopup("FAILED", e.Message);
                 }
             }
@@ -147,7 +145,8 @@ namespace WPFUI.SaveGameOperations
                 {
                     output = await sr.ReadToEndAsync();
                 }
-                if (string.IsNullOrEmpty(output)){
+                if (string.IsNullOrEmpty(output))
+                {
                     output = "Errrr, that file was empty";
                 }
             }

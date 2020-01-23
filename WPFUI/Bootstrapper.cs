@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using WPFUI.Helpers;
 using WPFUI.ViewModels;
@@ -32,7 +30,6 @@ namespace WPFUI
             _container
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>();
-
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)

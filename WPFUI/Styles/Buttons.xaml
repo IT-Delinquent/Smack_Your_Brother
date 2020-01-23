@@ -3,21 +3,21 @@
 
     <!-- Generic button style -->
     <Style x:Key="GenericButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Width" Value="80"/>
+        <Setter Property="Width" Value="80" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition Height="5"/>
+                            <RowDefinition />
+                            <RowDefinition Height="5" />
                         </Grid.RowDefinitions>
-                        <Border x:Name="loadButtonsBorder" Background="{StaticResource DOrangeBorder}" Grid.RowSpan="2"/>
+                        <Border x:Name="loadButtonsBorder" Background="{StaticResource DOrangeBorder}" Grid.RowSpan="2" />
                         <DockPanel>
-                            <ContentPresenter x:Name="loadButtonsPresenter" Content="{TemplateBinding Content}" Margin="0 8 0 0" HorizontalAlignment="Center" 
+                            <ContentPresenter x:Name="loadButtonsPresenter" Content="{TemplateBinding Content}" Margin="0 8 0 0" HorizontalAlignment="Center"
                                               VerticalAlignment="Center" TextBlock.Foreground="White" />
                         </DockPanel>
-                        <Rectangle x:Name="loadButtonsRectangle" Fill="{StaticResource LOrangeBorder}" Grid.Row="1" HorizontalAlignment="Left" Width="0"/>
+                        <Rectangle x:Name="loadButtonsRectangle" Fill="{StaticResource LOrangeBorder}" Grid.Row="1" HorizontalAlignment="Left" Width="0" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <!--Mouse over trigger-->
@@ -25,7 +25,7 @@
                             <EventTrigger.Actions>
                                 <BeginStoryboard>
                                     <Storyboard Storyboard.TargetName="loadButtonsRectangle" Storyboard.TargetProperty="Width">
-                                        <DoubleAnimation Duration="0:0:0.4" To="80" AccelerationRatio="0.2" DecelerationRatio="0.8"/>
+                                        <DoubleAnimation Duration="0:0:0.4" To="80" AccelerationRatio="0.2" DecelerationRatio="0.8" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger.Actions>
@@ -44,22 +44,22 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <!-- Upgrade buying button -->
     <Style x:Key="BuyButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid Name="buttonGrid">
-                        <Border Name="button" Background="{StaticResource DOrangeBorder}" CornerRadius="0 15 15 0"/>
+                        <Border Name="button" Background="{StaticResource DOrangeBorder}" CornerRadius="0 15 15 0" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="True">
-                            <Setter TargetName="button" Property="Opacity" Value="1"/>
+                            <Setter TargetName="button" Property="Opacity" Value="1" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="button" Property="Opacity" Value="0.4"/>
+                            <Setter TargetName="button" Property="Opacity" Value="0.4" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -69,17 +69,17 @@
 
     <!-- Upgrade object -->
     <Style x:Key="UpgradeBorder" TargetType="{x:Type Border}">
-        <Setter Property="CornerRadius" Value="20"/>
-        <Setter Property="Margin" Value="2"/>
-        <Setter Property="Height" Value="80"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="BorderBrush" Value="{StaticResource DOrangeBorder}"/>
-        <Setter Property="Background" Value="{StaticResource OrangeGradientH}"/>
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Height" Value="80" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderBrush" Value="{StaticResource DOrangeBorder}" />
+        <Setter Property="Background" Value="{StaticResource OrangeGradientH}" />
     </Style>
-    
+
     <!-- Smack button style -->
     <Style x:Key="SmackButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Focusable" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -88,7 +88,7 @@
                                  HorizontalAlignment="Center" VerticalAlignment="Center" />
 
                         <Ellipse x:Name="smackEllipse" Fill="{StaticResource OrangeGradientV}" Stretch="UniformToFill" Height="150"
-                                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                 HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <EventTrigger RoutedEvent="MouseEnter">
@@ -96,7 +96,7 @@
                                 <BeginStoryboard>
                                     <Storyboard Storyboard.TargetName="smackEllipse" Storyboard.TargetProperty="Height">
                                         <DoubleAnimation To="145" Duration="0:0:0.2"
-                                                            AccelerationRatio="0.7" DecelerationRatio="0.3"/>
+                                                            AccelerationRatio="0.7" DecelerationRatio="0.3" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger.Actions>
@@ -106,7 +106,7 @@
                                 <BeginStoryboard>
                                     <Storyboard Storyboard.TargetName="smackEllipse" Storyboard.TargetProperty="Height">
                                         <DoubleAnimationUsingKeyFrames>
-                                            <LinearDoubleKeyFrame Value="150" KeyTime="0:0:0.1"/>
+                                            <LinearDoubleKeyFrame Value="150" KeyTime="0:0:0.1" />
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -115,8 +115,8 @@
                         <EventTrigger RoutedEvent="Click">
                             <EventTrigger.Actions>
                                 <BeginStoryboard>
-                                    <Storyboard Storyboard.TargetName="smackEllipse" Storyboard.TargetProperty="Height" >
-                                        <DoubleAnimation Duration="0:0:0.05" To="0" From="140" AutoReverse="True"/>
+                                    <Storyboard Storyboard.TargetName="smackEllipse" Storyboard.TargetProperty="Height">
+                                        <DoubleAnimation Duration="0:0:0.05" To="0" From="140" AutoReverse="True" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger.Actions>
@@ -126,11 +126,11 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <!-- Settings button style -->
     <Style x:Key="SettingsButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="ToolTip" Value="Settings"/>
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="ToolTip" Value="Settings" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -144,7 +144,7 @@
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="TextBlock"
                                                          Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0:0:0"/>
+                                                         To="1" Duration="0:0:0" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger.Actions>
@@ -155,7 +155,7 @@
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="TextBlock"
                                                          Storyboard.TargetProperty="Opacity"
-                                                         To="0.7" Duration="0:0:0"/>
+                                                         To="0.7" Duration="0:0:0" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger.Actions>
@@ -165,10 +165,10 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <!-- Apple toggle button style -->
     <Style TargetType="{x:Type ToggleButton}">
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -223,5 +223,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-
 </ResourceDictionary>

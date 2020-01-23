@@ -1,9 +1,4 @@
 ﻿using Caliburn.Micro;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WPFUI.ViewModels
 {
@@ -25,8 +20,8 @@ namespace WPFUI.ViewModels
         public string Header
         {
             get { return _header; }
-            set 
-            { 
+            set
+            {
                 _header = value;
                 NotifyOfPropertyChange(() => Header);
             }
@@ -38,7 +33,7 @@ namespace WPFUI.ViewModels
         public string Message
         {
             get { return _message; }
-            set 
+            set
             {
                 _message = value;
                 NotifyOfPropertyChange(() => Message);

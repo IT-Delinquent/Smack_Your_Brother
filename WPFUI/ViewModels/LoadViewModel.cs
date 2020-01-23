@@ -1,8 +1,6 @@
 ﻿using Caliburn.Micro;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using WPFUI.EventModels;
 using WPFUI.Helpers;
@@ -27,8 +25,8 @@ namespace WPFUI.ViewModels
         public string Version
         {
             get { return _version; }
-            set 
-            { 
+            set
+            {
                 _version = value;
                 NotifyOfPropertyChange(() => Version);
             }
@@ -50,7 +48,7 @@ namespace WPFUI.ViewModels
             //Updates the events private variables
             _events = events;
             //Populate the version info
-            Version = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString(); 
+            Version = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString();
         }
 
         /// <summary>
@@ -75,7 +73,7 @@ namespace WPFUI.ViewModels
             */
 
             //Checking the save location isn't cancelled, if it is then do nothing
-            if (FileOperations.SaveLocation != "Cancelled") 
+            if (FileOperations.SaveLocation != "Cancelled")
             {
                 //If the save location isn't a txt file, return and do nothing
                 if (!FileOperations.SaveLocation.EndsWith(".txt"))
@@ -84,8 +82,8 @@ namespace WPFUI.ViewModels
                     return;
                 }
                 string loadResponse = await FileOperations.LoadData();
-                //Try to load the file 
-                if (loadResponse.StartsWith("Failed")) 
+                //Try to load the file
+                if (loadResponse.StartsWith("Failed"))
                 {
                     //Loading the file failed
                     PopupHelper.ShowPopup("FAILED", loadResponse.Replace("Failed", ""));

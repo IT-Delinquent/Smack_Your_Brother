@@ -1,15 +1,10 @@
 ﻿using Caliburn.Micro;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WPFUI.Helpers;
 
 namespace WPFUI.ViewModels
 {
     /// <summary>
-    /// Logic for the settings popup 
+    /// Logic for the settings popup
     /// </summary>
     public class SettingsPopupViewModel : Screen
     {
@@ -58,16 +53,16 @@ namespace WPFUI.ViewModels
         /// <summary>
         /// Holds the value for the background music volume
         /// </summary>
-        private float _backgroundMusicVolume = 1;
+        private int _backgroundMusicVolume = 100;
 
         /// <summary>
         /// Accessor and modifier for the background music volume
         /// </summary>
-        public float BackgroundMusicVolume
+        public int BackgroundMusicVolume
         {
             get { return _backgroundMusicVolume; }
-            set 
-            { 
+            set
+            {
                 _backgroundMusicVolume = value;
                 NotifyOfPropertyChange(() => BackgroundMusicVolume);
             }
