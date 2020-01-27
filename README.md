@@ -29,5 +29,6 @@ Here is a GIF of the game being played (Sped up, obviously...) 🕹️:
 ## UPDATES
 | Date | Changes
 |:-----:|:-------:|
+| 24/01/2020 | Simplified the generic button animation. Added toggle buttons for the smack and purchase sound effects (by the way I added a purchase sound effect 😂 ). Finally, I added a slider for the background music volume.
 | 30/12/2019 | What I would call the first fully working program. Finished the styling of stats and sounds. Still have some improvements to add, for example: Muting and changing the volume of game sounds and music
 | 14/11/2019 | Added stats popup. Added stats to load and save procedures. Fixed some save and load messages. Half way through styling the stats DataGrid. See commit for full info
