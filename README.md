@@ -17,7 +17,7 @@ The game also has a number of "upgrades" that can  be purchased to increase the 
 | Microwave | 500,000 | 80
 
 
-As you can see, anyone who wants to play this game is in for the long haul 😅⌛
+As you can see, anyone who wants to play this game is in for the long haul 😅⌛ mharwood.uk
 
 I plan to add more upgrades and maybe more features in the future but for right now, I just want to put this here and see what happens 😇
 
